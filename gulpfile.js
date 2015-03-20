@@ -24,25 +24,17 @@ gulp.task('sass', function () {
     .pipe(gulp.dest('public/css'))
     .pipe(rename({suffix: '.min'}))
     .pipe(minifycss())
-    .pipe(gulp.dest('public/css'))
+    .pipe(gulp.dest('public/css'));
 });
 
 gulp.task('scripts', function () {
   return gulp.src('app/**/*.js')
-    .pipe(gulp.dest('public'))
+    .pipe(gulp.dest('public'));
 });
 
 gulp.task('views', function () {
   return gulp.src('app/**/*.html')
-    .pipe(gulp.dest('public'))
-});
-
-gulp.task('browser-sync', function() {
-  browserSync({
-    server: {
-      baseDir: "./public"
-      }
-  });
+    .pipe(gulp.dest('public'));
 });
 
 gulp.task('default', ['clean'], function() {
@@ -51,7 +43,7 @@ gulp.task('default', ['clean'], function() {
 
 gulp.task('serve', ['default'], function() {
     browserSync({
-        server: "./public"
+        server: "./"
     });
     gulp.watch('app/**/*.scss', ['sass']);
     gulp.watch('app/**/*.js', ['scripts']);
