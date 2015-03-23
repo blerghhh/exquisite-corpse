@@ -14,7 +14,13 @@ function exquisiteConfig($routeProvider) {
       controllerAs: 'canvas',
       private: true
     })
+    .when('/users/:username', {
+      templateUrl: 'profile/profile.html',
+      controller: 'ProfileCtrl',
+      controllerAs: 'profile',
+      private: true
+    })
     .otherwise({
-      redirectTo: '/l'
+      redirectTo: '/'
     });
 }

@@ -23,6 +23,7 @@ angular
     };
 
     vm.register = function () {
+      var fb = new Firebase(BASE_URL);
 
       authFactory.register(vm.user, function (error, userData) {
         if (error) {
@@ -37,9 +38,11 @@ angular
                 console.log("Error creating user:", error);
             }
         } else {
-          // vm.login();
+          var profileData = { username: vm.user.username, email: vm.user.email };
+
           console.log("Successfully created user account with uid:", userData.uid);
-          console.log(vm.user.username);
+          fb.child('users/' + userData.uid + "/profile").set(profileData);
+          vm.login();
 
         }
       });
