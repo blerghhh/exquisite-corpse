@@ -24,9 +24,11 @@ function authFactory(BASE_URL) {
     },
 
     register: function (user, cb) {
-      var fb = new Firebase(BASE_URL);
+      var fb        = new Firebase(BASE_URL),
+          profileData = { username: user.username, email: user.email};
 
       fb.createUser(user, cb);
+      fb.child('users/' + user.username + "/profile").set(profileData);
     },
 
     logout: function (cb) {

@@ -24,7 +24,7 @@ angular
 
     vm.register = function () {
 
-      authFactory.register(vm.user, function (error, authData) {
+      authFactory.register(vm.user, function (error, userData) {
         if (error) {
             switch (error && error.code) {
               case "EMAIL_TAKEN":
@@ -37,8 +37,10 @@ angular
                 console.log("Error creating user:", error);
             }
         } else {
-          vm.login();
+          // vm.login();
           console.log("Successfully created user account with uid:", userData.uid);
+          console.log(vm.user.username);
+
         }
       });
     };

@@ -2,11 +2,14 @@
   <form name="loginForm" ng-submit="auth.login()" novalidate>
     <h2>Login</h2>
 
+    <label>Username</label>
+    <input type="text" placeholder="corpseguy4ever" ng-model="auth.user.username" required>
+
     <label>Email</label>
-    <input type="email" placeholder="email" ng-model="auth.user.email" required>
+    <input type="email" placeholder="your@email.com" ng-model="auth.user.email" required>
 
     <label>Password</label>
-    <input type="password" placeholder="password" ng-model="auth.user.password" required>
+    <input type="password" placeholder="p@$$w0rd" ng-model="auth.user.password" required>
 
     <div class="button small" ng-click="auth.register()">Register</div>
     <input type="submit" class="button small" value="Login">
