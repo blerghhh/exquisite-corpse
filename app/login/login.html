@@ -1,0 +1,17 @@
+<div class="row">
+  <form name="loginForm" ng-submit="auth.login()" novalidate>
+    <h2>Login</h2>
+
+    <label>Email</label>
+    <input type="email" placeholder="email" ng-model="auth.user.email" required>
+
+    <label>Password</label>
+    <input type="password" placeholder="password" ng-model="auth.user.password" required>
+
+    <div class="button small" ng-click="auth.register()">Register</div>
+    <input type="submit" class="button small" value="Login">
+    <div class="button small" ng-click="auth.resetPassword()">Forgot Password?</div>
+
+    </ul>
+  </form>
+</div>

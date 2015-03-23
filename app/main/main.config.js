@@ -15,6 +15,6 @@ function exquisiteConfig($routeProvider) {
       private: true
     })
     .otherwise({
-      redirectTo: '/'
+      redirectTo: '/l'
     });
 }
