@@ -1,1 +1,1 @@
-angular.module('exquisite', ['ngRoute', 'lumx']);
+angular.module('exquisite', ['ngRoute', 'mgcrea.ngStrap']);
