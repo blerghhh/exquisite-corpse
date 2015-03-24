@@ -6,19 +6,27 @@
 
   <div class="row">
     <div class="col-sm-12">
-      <div class="canvas-view">
+      <div class="canvas">
         <ul>
-          <li ng-repeat="message in canvas.messages">{{message.text}}</li>
+          <li ng-repeat="message in canvas.messages
+          | limitTo: -2">{{message.text}}</li>
+          <form name="canvasForm" ng-submit="canvas.addMessage()" novalidate>
+            <input class="new-message" name="message"
+            ng-model="canvas.newMessageText"
+            ng-focus="canvas.toggleOn()"
+            ng-blur="canvas.toggleOff()" required />
+          </form>
         </ul>
       </div>
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-sm-12">
-      <form ng-submit="canvas.addMessage()">
-        <input ng-model="canvas.newMessageText" ng-focus="canvas.toggleOn()" ng-blur="canvas.toggleOff()" />
-        <button type="submit">Add Message</button>
-      </form>
-    </div>
+<!--   <div class="row">
+  <div class="col-sm-12">
+    <form ng-submit="canvas.addMessage()">
+      <input ng-model="canvas.newMessageText" ng-focus="canvas.toggleOn()" ng-blur="canvas.toggleOff()" />
+      <button type="submit">Add Message</button>
+    </form>
   </div>
+</div>
+ -->

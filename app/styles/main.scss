@@ -7,4 +7,21 @@ h1 {
 
 .canvas {
   background: white;
+  font-size: 1.75rem;
+  display: inline-block;
+  ul {
+    list-style: none;
+    padding-left: 0;
+    li {
+      line-height: 1.6;
+    }
+  }
+  .new-message {
+    border: 0;
+    border-bottom: 1px solid lightgray;
+    width: 100%;
+    &:focus {
+      outline: 0;
+    }
+  }
 }

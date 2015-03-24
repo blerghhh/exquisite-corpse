@@ -2,12 +2,9 @@ angular
   .module('exquisite')
   .controller('CanvasCtrl', CanvasCtrl);
 
-  function CanvasCtrl ($scope, $location, $firebaseObject, $firebaseArray, canvasFactory, BASE_URL) {
+  function CanvasCtrl ($scope, $location, $firebaseArray, canvasFactory, BASE_URL) {
     var vm         = this,
-        fbCanvas   = new Firebase(BASE_URL + "/canvas/test"),
-        syncObject = $firebaseObject(fbCanvas);
-
-    syncObject.$bindTo($scope, "messageInput");
+        fbCanvas   = new Firebase(BASE_URL + "/canvas/test/messages");
 
     vm.messages = $firebaseArray(fbCanvas);
 
@@ -15,6 +12,7 @@ angular
       vm.messages.$add({
         text: vm.newMessageText
       });
+      vm.newMessageText = null;
     };
 
     vm.toggleOn = function() {
