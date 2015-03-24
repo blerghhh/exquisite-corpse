@@ -1,1 +1,1 @@
-angular.module('exquisite', ['ngRoute', 'mgcrea.ngStrap', 'mgcrea.ngStrap.navbar']);
+angular.module('exquisite', ['ngRoute', 'firebase', 'mgcrea.ngStrap', 'mgcrea.ngStrap.navbar']);

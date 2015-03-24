@@ -1,4 +1,4 @@
-<div class="navbar navbar-default" role="navigation" bs-navbar>
+<div class="navbar navbar-default" role="navigation" bs-navbar ng-controller="NavCtrl as nav">
   <div class="navbar-header">
     <a class="navbar-brand" href="#/">Exquisite Corpse</a>
   </div>
@@ -6,6 +6,6 @@
     <li data-match-route="/canvas"><a href="#/canvas">Canvas</a></li>
     <li data-match-route="/login"><a href="#/login">Login</a></li>
     <li data-match-route="/logout"><a href="#/logout">Logout</a></li>
-    <li data-match-route="/profile"><a href="#/users/bc">Profile</a></li>
+    <li data-match-route="/profile"><a href="#/users/{{nav.username}}/profile">Profile</a></li>
   </ul>
 </div>

@@ -5,9 +5,9 @@ angular
 function profileFactory($http, BASE_URL) {
   var profile = {};
 
-  profile.findOne = function (userName, cb) {
+  profile.findOne = function (user, cb) {
     $http
-      .get(BASE_URL + 'users/' + userName + '.json')
+      .get(BASE_URL + 'users/' + user + '/profile.json')
       .success(function (data) {
         cb(data);
       });

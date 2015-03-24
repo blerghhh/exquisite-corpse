@@ -14,7 +14,7 @@ function exquisiteConfig($routeProvider) {
       controllerAs: 'canvas',
       private: true
     })
-    .when('/users/:username', {
+    .when('/users/:uuid/profile', {
       templateUrl: 'profile/profile.html',
       controller: 'ProfileCtrl',
       controllerAs: 'profile',

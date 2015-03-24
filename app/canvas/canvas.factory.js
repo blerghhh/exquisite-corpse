@@ -49,6 +49,30 @@ function canvasFactory($http, BASE_URL) {
       });
   };
 
+  canvas.toggleOn = function (data, cb) {
+    var url = BASE_URL + 'canvas/test/status.json';
+
+    $http
+    .patch(url, data)
+      .success(function (res) {
+        if (typeof cb === 'function') {
+          cb(res);
+        }
+      });
+  };
+
+  canvas.toggleOff = function (data, cb) {
+    var url = BASE_URL + 'canvas/test/status.json';
+
+    $http
+    .patch(url, data)
+      .success(function (res) {
+        if (typeof cb === 'function') {
+          cb(res);
+        }
+      });
+  };
+
 return canvas;
 
 }
