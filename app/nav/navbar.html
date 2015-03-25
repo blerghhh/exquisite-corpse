@@ -3,9 +3,9 @@
     <a class="navbar-brand" href="#/">Exquisite Corpse</a>
   </div>
   <ul class="nav navbar-nav">
-    <li data-match-route="/canvas"><a href="#/canvas">Canvas</a></li>
-    <li data-match-route="/login"><a href="#/login">Login</a></li>
-    <li data-match-route="/logout"><a href="#/logout">Logout</a></li>
-    <li data-match-route="/profile"><a href="#/users/{{nav.username}}/profile">Profile</a></li>
+    <li ng-show="nav.isLoggedIn()" data-match-route="/canvas"><a href="#/canvas">Canvas</a></li>
+    <li ng-hide="nav.isLoggedIn()" data-match-route="/login"><a href="#/login">Login</a></li>
+    <li ng-show="nav.isLoggedIn()" data-match-route="/logout"><a href="#/logout">Logout</a></li>
+    <li ng-show="nav.isLoggedIn()" data-match-route="/profile"><a href="#/users/{{nav.username}}/profile">Profile</a></li>
   </ul>
 </div>

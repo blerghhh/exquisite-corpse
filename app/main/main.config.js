@@ -4,10 +4,6 @@ angular
 
 function exquisiteConfig($routeProvider) {
   $routeProvider
-    .when('/', {
-      templateUrl: 'main/main.html',
-      controller: 'MainCtrl'
-    })
     .when('/canvas', {
       templateUrl: 'canvas/canvas.html',
       controller: 'CanvasCtrl',
@@ -27,6 +23,6 @@ function exquisiteConfig($routeProvider) {
       private: true
     })
     .otherwise({
-      redirectTo: '/'
+      redirectTo: '/canvas'
     });
 }

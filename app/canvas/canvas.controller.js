@@ -12,6 +12,10 @@ angular
 
     vm.messages = $firebaseArray(fbCanvas.child('/messages'));
 
+    canvasFactory.findOne(id, function (data) {
+      vm.info = data.info;
+    });
+
     vm.addMessage = function() {
       vm.messages.$add({
         text: vm.newMessageText
@@ -29,7 +33,7 @@ angular
         userData = snap.val();
         canvasData = {
           info: { name: vm.canvasName, creator: userData.profile.username },
-          status: { active: false }
+          status: { active: false, private: vm.private || false }
         };
 
         vm.newCanvas.$add(canvasData).then(function(cb) {
