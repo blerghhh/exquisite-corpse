@@ -11,6 +11,7 @@ angular
         fbCanvas         = fb.child('/canvas/' + id);
 
     vm.messages = $firebaseArray(fbCanvas.child('/messages'));
+    vm.canvases = $firebaseArray(fb.child('/canvas'));
 
     canvasFactory.findOne(id, function (data) {
       vm.info = data.info;
