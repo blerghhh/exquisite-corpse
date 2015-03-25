@@ -2,17 +2,45 @@ angular
   .module('exquisite')
   .controller('CanvasCtrl', CanvasCtrl);
 
-  function CanvasCtrl ($scope, $location, $firebaseArray, canvasFactory, BASE_URL) {
-    var vm         = this,
-        fbCanvas   = new Firebase(BASE_URL + "/canvas/test/messages");
+  function CanvasCtrl ($routeParams, $scope, $location, $firebaseArray, canvasFactory, BASE_URL) {
+    var vm               = this,
+        fb               = new Firebase(BASE_URL),
+        id               = $routeParams.uuid,
+        user             = fb.getAuth().uid,
+        fbUser           = fb.child('/users/' + user),
+        fbCanvas         = fb.child('/canvas/' + id);
 
-    vm.messages = $firebaseArray(fbCanvas);
+    vm.messages = $firebaseArray(fbCanvas.child('/messages'));
 
     vm.addMessage = function() {
       vm.messages.$add({
         text: vm.newMessageText
       });
       vm.newMessageText = null;
+    };
+
+    vm.createCanvas = function() {
+      var userData,
+          canvasData;
+
+      vm.newCanvas = $firebaseArray(fb.child('/canvas'));
+
+      fbUser.once('value', function(snap) {
+        userData = snap.val();
+        canvasData = {
+          info: { name: vm.canvasName, creator: userData.profile.username },
+          status: { active: false }
+        };
+
+        vm.newCanvas.$add(canvasData).then(function(cb) {
+          $location.path('/canvas/' + cb.key());
+        });
+
+        vm.canvasName = null;
+
+      });
+
+
     };
 
     vm.toggleOn = function() {

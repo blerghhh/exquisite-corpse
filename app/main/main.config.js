@@ -14,6 +14,12 @@ function exquisiteConfig($routeProvider) {
       controllerAs: 'canvas',
       private: true
     })
+    .when('/canvas/:uuid', {
+      templateUrl: 'canvas/canvas.html',
+      controller: 'CanvasCtrl',
+      controllerAs: 'canvas',
+      private: true
+    })
     .when('/users/:uuid/profile', {
       templateUrl: 'profile/profile.html',
       controller: 'ProfileCtrl',

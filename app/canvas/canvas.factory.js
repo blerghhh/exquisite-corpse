@@ -23,7 +23,7 @@ function canvasFactory($http, BASE_URL) {
 
   canvas.create = function (data, cb) {
     $http
-    .post(BASE_URL + 'canvas.json', data)
+    .post(BASE_URL + 'canvas/' + id + '.json', data)
     .success(function (res) {
       cb(res);
     });
