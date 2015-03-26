@@ -32,13 +32,18 @@ gulp.task('scripts', function () {
     .pipe(gulp.dest('public'));
 });
 
+gulp.task('components', function () {
+  return gulp.src('bower_components/**/*')
+    .pipe(gulp.dest('public/bower_components'));
+});
+
 gulp.task('views', function () {
   return gulp.src('app/**/*.html')
     .pipe(gulp.dest('public'));
 });
 
 gulp.task('default', ['clean'], function() {
-    gulp.start('sass', 'scripts', 'views');
+    gulp.start('sass', 'views', 'scripts', 'components');
 });
 
 gulp.task('serve', ['default'], function() {

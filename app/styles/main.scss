@@ -1,5 +1,5 @@
 @import '../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap';
-@import url(http://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Roboto:400,700,700italic,400italic);
+@import url(https://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Roboto:400,700,700italic,400italic);
 
 h1 {
   color: black;
@@ -10,13 +10,6 @@ h1 {
   font-size: 1.75rem;
   display: inline-block;
   min-width: 360px;
-  ul {
-    list-style: none;
-    padding-left: 0;
-    li {
-      line-height: 1.6;
-    }
-  }
   .new-message {
     border: 0;
     border-bottom: 1px solid lightgray;
@@ -24,6 +17,24 @@ h1 {
     &:focus {
       outline: 0;
     }
+  }
+}
+
+.canvas,
+.browse,
+.results {
+  ul {
+    list-style: none;
+    padding-left: 0;
+    li {
+      line-height: 1.6;
+    }
+  }
+}
+
+.results {
+  ul li {
+    display: inline;
   }
 }
 

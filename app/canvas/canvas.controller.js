@@ -12,6 +12,12 @@ angular
 
     vm.messages = $firebaseArray(fbCanvas.child('/messages'));
     vm.canvases = $firebaseArray(fb.child('/canvas'));
+    vm.messageCount = {};
+
+    vm.messages.$loaded().then(function(n){
+        vm.messageCount = n.length;
+        return vm.messageCount;
+      });
 
     canvasFactory.findOne(id, function (data) {
       vm.info = data.info;
@@ -19,7 +25,8 @@ angular
 
     vm.addMessage = function() {
       vm.messages.$add({
-        text: vm.newMessageText
+        text: vm.newMessageText,
+        user: user
       });
       vm.newMessageText = null;
     };
@@ -30,10 +37,10 @@ angular
 
       vm.newCanvas = $firebaseArray(fb.child('/canvas'));
 
-      fbUser.once('value', function(snap) {
-        userData = snap.val();
+      // fbUser.once('value', function(snap) {
+      //   userData = snap.val();
         canvasData = {
-          info: { name: vm.canvasName, creator: userData.profile.username },
+          info: { name: vm.canvasName, creator: user },
           status: { active: false, private: vm.private || false }
         };
 
@@ -43,7 +50,7 @@ angular
 
         vm.canvasName = null;
 
-      });
+      // });
 
 
     };
