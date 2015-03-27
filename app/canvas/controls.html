@@ -1,0 +1,23 @@
+<div class="row" ng-controller="CanvasCtrl as canvas" bs-collapse>
+  <div class="col-sm-12">
+    <div class="panel panel-default">
+      <div class="panel-heading" bs-collapse-toggle>New Canvas</div>
+      <div class="panel-body" bs-collapse-target>
+        <form name="newCanvasForm" ng-submit="canvas.createCanvas()" novalidate>
+          <div class="form-group">
+            <label>Name</label>
+            <input name="canvasName" class="form-control" type="text" placeholder="My Canvas" ng-model="canvas.canvasName" required>
+          </div>
+          <div class="checkbox">
+            <label class="checkbox-inline">
+              <input type="checkbox" ng-model="canvas.private" value="true"> Private
+            </label>
+          </div>
+          <div class="form-group">
+            <input type="submit" class="btn btn-success">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

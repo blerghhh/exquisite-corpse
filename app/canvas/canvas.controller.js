@@ -2,56 +2,70 @@ angular
   .module('exquisite')
   .controller('CanvasCtrl', CanvasCtrl);
 
-  function CanvasCtrl ($routeParams, $scope, $location, $firebaseArray, canvasFactory, BASE_URL) {
+  function CanvasCtrl ($routeParams, $scope, $location, $firebaseArray, $firebaseObject, canvasFactory, BASE_URL) {
     var vm               = this,
         fb               = new Firebase(BASE_URL),
         id               = $routeParams.uuid,
         user             = fb.getAuth().uid,
+        users            = [],
         fbUser           = fb.child('/users/' + user),
         fbCanvas         = fb.child('/canvas/' + id);
 
     vm.messages = $firebaseArray(fbCanvas.child('/messages'));
     vm.canvases = $firebaseArray(fb.child('/canvas'));
+    vm.canvasInfo = $firebaseObject(fbCanvas.child('/info/contributors'));
     vm.messageCount = {};
+
+    canvasFactory.findOne(id, function (data) {
+      vm.info = data.info;
+    });
 
     vm.messages.$loaded().then(function(n){
         vm.messageCount = n.length;
         return vm.messageCount;
       });
 
-    canvasFactory.findOne(id, function (data) {
-      vm.info = data.info;
-    });
+    ///////// Functions ///////////
+
+    vm.users = function() {
+      var arr   = [],
+          users = [];
+
+      for (user in vm.messages) {
+        arr.push(vm.messages[user].user);
+      }
+
+      users = arr.filter(function(elem, index, self) {
+      return index === self.indexOf(elem);
+      });
+
+      return users;
+
+    };
 
     vm.addMessage = function() {
+
       vm.messages.$add({
         text: vm.newMessageText,
-        user: user
+        user: user,
       });
+
       vm.newMessageText = null;
+      vm.messageCount = Object.keys(vm.messages).length - 17;
     };
 
     vm.createCanvas = function() {
-      var userData,
-          canvasData;
+      var newCanvas  = $firebaseArray(fb.child('/canvas')),
+          canvasData = {
+            info: { name: vm.canvasName, creator: user, contributors: 1 },
+            status: { active: false, private: vm.private || false }
+          };
 
-      vm.newCanvas = $firebaseArray(fb.child('/canvas'));
+      newCanvas.$add(canvasData).then(function(canvas) {
+        $location.path('/canvas/' + canvas.key());
+      });
 
-      // fbUser.once('value', function(snap) {
-      //   userData = snap.val();
-        canvasData = {
-          info: { name: vm.canvasName, creator: user },
-          status: { active: false, private: vm.private || false }
-        };
-
-        vm.newCanvas.$add(canvasData).then(function(cb) {
-          $location.path('/canvas/' + cb.key());
-        });
-
-        vm.canvasName = null;
-
-      // });
-
+      vm.canvasName = null;
 
     };
 
@@ -74,10 +88,6 @@ angular
       canvasFactory.delete(id, function () {
         delete vm.data[id];
       });
-    };
-
-    vm.updateCanvas = function (id) {
-      canvasFactory.update(id, vm.data[id]);
     };
 
   }

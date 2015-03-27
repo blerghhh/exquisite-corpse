@@ -4,7 +4,7 @@
 
   <div class="row">
 
-    <div class="col-md-8">
+    <div class="col-sm-12 col-md-8">
 
       <div class="row">
         <div class="col-sm-12">
@@ -31,58 +31,28 @@
 
       <div class="row">
         <div class="col-sm-12">
-          <div class="results">
-            <h1>Results</h1>
-
-            <ul>
-              <li ng-repeat="message in canvas.messages">{{message.text}}&nbsp;</li>
-            </ul>
-
-          </div>
-        </div>
-      </div>
-
-    </div><!--end col-md-8 -->
-
-    <div class="col-md-4">
-
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="panel panel-default">
-            <div class="panel-heading">New Canvas</div>
-            <div class="panel-body">
-              <form name="newCanvasForm" ng-submit="canvas.createCanvas()" novalidate>
-                <div class="form-group">
-                  <label>Name</label>
-                  <input name="canvasName" class="form-control" type="text" placeholder="My Canvas" ng-model="canvas.canvasName" required>
-                </div>
-                <div class="checkbox">
-                  <label class="checkbox-inline">
-                    <input type="checkbox" ng-model="canvas.private" value="true"> Private
-                  </label>
-                </div>
-                <div class="form-group">
-                  <input type="submit" class="btn btn-success">
-                </div>
-              </form>
+          <div bs-collapse start-collapsed=true>
+            <a class="btn btn-primary" bs-collapse-toggle ng-click="canvas.users()">Results</a>
+            <div class="results" bs-collapse-target>
+              <p><ul>
+                <li ng-repeat="message in canvas.messages" class="{{message.user}}">{{message.text}}&nbsp;</li>
+              </ul></p>
             </div>
           </div>
         </div>
       </div>
+
+
+    </div><!--end col-md-8 -->
+
+    <div class="col-sm-12 col-md-4">
+
+      <div ng-include="'login/login-sidebar.html'"></div>
+
+      <div ng-include="'canvas/controls.html'"></div>
 
       <div ng-include="'browse/browse.html'"></div>
 
     </div><!--end col-md-4 -->
 
   </div>
-
-
-<!--   <div class="row">
-  <div class="col-sm-12">
-    <form ng-submit="canvas.addMessage()">
-      <input ng-model="canvas.newMessageText" ng-focus="canvas.toggleOn()" ng-blur="canvas.toggleOff()" />
-      <button type="submit">Add Message</button>
-    </form>
-  </div>
-</div>
- -->
