@@ -11,12 +11,14 @@
           <div class="canvas">
 
             <h1>{{canvas.info.name}}</h1>
+            <p>{{canvas.info.format.join(" ")}}</p>
+            <p ng-repeat="word in canvas.info.format">{{word.text}}</p>
 
             <ul>
               <li ng-repeat="message in canvas.messages
               | limitTo: -1">{{message.text}}</li>
               <form name="canvasForm" ng-submit="canvas.addMessage()" novalidate>
-                <input class="new-message" name="message" placeholder="The exquisite corpse shall drink the new wine"
+                <input class="new-message" name="message" placeholder="{{canvas.info.format[canvas.info.counter]}}"
                 ng-model="canvas.newMessageText"
                 ng-focus="canvas.toggleOn()"
                 ng-blur="canvas.toggleOff()" required />

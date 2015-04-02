@@ -9,16 +9,22 @@ angular
         user             = fb.getAuth().uid,
         users            = [],
         fbUser           = fb.child('/users/' + user),
-        fbCanvas         = fb.child('/canvas/' + id);
+        fbCanvas         = fb.child('/canvas/' + id),
+        counter;
 
     vm.messages = $firebaseArray(fbCanvas.child('/messages'));
     vm.canvases = $firebaseArray(fb.child('/canvas'));
-    vm.canvasInfo = $firebaseObject(fbCanvas.child('/info/contributors'));
+    vm.canvasInfo = $firebaseObject(fbCanvas.child('/info'));
     vm.messageCount = {};
 
     canvasFactory.findOne(id, function (data) {
       vm.info = data.info;
+      var counter = vm.info.counter;
+      console.log(vm.info.format[counter]);
+      return counter;
     });
+
+
 
     vm.messages.$loaded().then(function(n){
         vm.messageCount = n.length;
@@ -50,14 +56,19 @@ angular
         user: user,
       });
 
+      vm.canvasInfo.counter = vm.canvasInfo.counter + 1;
+      vm.canvasInfo.$save();
+
       vm.newMessageText = null;
       vm.messageCount = Object.keys(vm.messages).length - 17;
+      vm.info.counter = vm.info.counter + 1;
     };
 
     vm.createCanvas = function() {
       var newCanvas  = $firebaseArray(fb.child('/canvas')),
+          format     = vm.canvasFormat.split(" "),
           canvasData = {
-            info: { name: vm.canvasName, creator: user, contributors: 1 },
+            info: { name: vm.canvasName, creator: user, contributors: 1, counter: 0, format: format },
             status: { active: false, private: vm.private || false }
           };
 
@@ -66,6 +77,7 @@ angular
       });
 
       vm.canvasName = null;
+      vm.canvasFormat = null;
 
     };
 

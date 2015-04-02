@@ -8,6 +8,11 @@
             <label>Name</label>
             <input name="canvasName" class="form-control" type="text" placeholder="My Canvas" ng-model="canvas.canvasName" required>
           </div>
+          <div class="form-group">
+            <label>Sentence format</label>
+            <p>Ex: article adjective noun auxiliary-verb verb article adjective noun</p>
+            <textarea name="canvasFormat" class="form-control" type="text" ng-model="canvas.canvasFormat" required></textarea>
+          </div>
           <div class="checkbox">
             <label class="checkbox-inline">
               <input type="checkbox" ng-model="canvas.private" value="true"> Private
