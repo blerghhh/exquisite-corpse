@@ -62,14 +62,20 @@ angular
         data.$save();
       });
 
-      vm.messages.$add({
-        text: vm.newMessageText,
-        user: user
-      });
+      if (vm.info.counter < vm.info.format.length - 1) {
+        vm.messages.$add({
+          text: vm.newMessageText,
+          user: user
+        });
+      } else {
+        vm.messages.$add({
+          text: vm.newMessageText + '.',
+          user: user
+        });
+      }
 
       vm.newMessageText = null;
       vm.messageCount = Object.keys(vm.messages).length - 17;
-      // vm.info.counter = vm.info.counter + 1;
     };
 
     vm.createCanvas = function() {

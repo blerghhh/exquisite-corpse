@@ -17,12 +17,11 @@
               | limitTo: -1">{{message.text}}</li>
               <form name="canvasForm" ng-submit="canvasForm.$valid && canvas.addMessage()" novalidate>
                 <input class="new-message" name="message"
-                type="text"
                 placeholder="{{canvas.info.format[canvas.info.counter]}}"
                 ng-model="canvas.newMessageText"
                 ng-focus="canvas.toggleOn()"
                 ng-blur="canvas.toggleOff()"
-                ng-minlength=1 required />
+                required />
               </form>
             </ul>
             <p>Total lines: {{canvas.messageCount}}</p>
