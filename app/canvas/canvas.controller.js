@@ -51,17 +51,25 @@ angular
 
     vm.addMessage = function() {
 
-      vm.messages.$add({
-        text: vm.newMessageText,
-        user: user,
+      vm.canvasInfo.$loaded().then(function(data){
+        if (data.counter < data.format.length - 1) {
+          data.counter = data.counter + 1;
+          vm.info.counter = vm.info.counter + 1;
+        } else {
+          data.counter = 0;
+          vm.info.counter = 0;
+        }
+        data.$save();
       });
 
-      vm.canvasInfo.counter = vm.canvasInfo.counter + 1;
-      vm.canvasInfo.$save();
+      vm.messages.$add({
+        text: vm.newMessageText,
+        user: user
+      });
 
       vm.newMessageText = null;
       vm.messageCount = Object.keys(vm.messages).length - 17;
-      vm.info.counter = vm.info.counter + 1;
+      // vm.info.counter = vm.info.counter + 1;
     };
 
     vm.createCanvas = function() {
