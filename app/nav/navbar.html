@@ -1,9 +1,9 @@
 <div class="navbar navbar-default" role="navigation" bs-navbar ng-controller="NavCtrl as nav">
   <div class="navbar-header">
-    <a class="navbar-brand" href="#/">Exquisite Corpse</a>
+    <a class="navbar-brand" href="#/canvas">Exquisite Corpse</a>
   </div>
   <ul class="nav navbar-nav">
-    <li ng-show="nav.isLoggedIn()" data-match-route="/canvas"><a href="#/canvas">Canvas</a></li>
+    <li ng-show="nav.isLoggedIn()" data-match-route="/canvas"><a href="#/canvas">About</a></li>
     <li ng-hide="nav.isLoggedIn()" data-match-route="/login"><a href="#/login">Login</a></li>
     <li ng-show="nav.isLoggedIn()" data-match-route="/logout"><a href="#/logout">Logout</a></li>
     <li ng-show="nav.isLoggedIn()" data-match-route="/profile"><a href="#/users/{{nav.username}}/profile">Profile</a></li>

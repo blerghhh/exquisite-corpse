@@ -2,12 +2,19 @@
 
 <div class="container">
 
-  <h1>Profile</h1>
   <div class="row">
-    <div class="col-sm-12">
 
+    <div class="col-sm-12 col-md-8">
+      <h1>Profile</h1>
       <p>{{profile.user.username}}</p>
       <p>{{profile.user.email}}</p>
-
     </div>
-  </div>
+
+    <div class="col-sm-12 col-md-4">
+      <div ng-include="'login/login-sidebar.html'"></div>
+      <div ng-include="'includes/about.html'"></div>
+      <div ng-include="'browse/browse.html'"></div>
+      <div ng-include="'canvas/controls.html'"></div>
+    </div><!--end col-md-4 -->
+
+</div>

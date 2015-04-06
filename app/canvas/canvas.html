@@ -10,21 +10,25 @@
         <div class="col-sm-12">
           <div class="canvas">
 
-            <h1>{{canvas.info.name}}</h1>
-            <p>{{canvas.info.format.join(" ")}}</p>
+            <h1>{{data.info.name}}</h1>
+
+            <ul class="format">
+              <li ng-repeat="word in data.info.format" ng-class="{'active': word == data.info.format[data.info.counter]}">{{word}}&nbsp;</li>
+            </ul>
+
             <ul>
-              <li ng-repeat="message in canvas.messages
-              | limitTo: -1">{{message.text}}</li>
-              <form name="canvasForm" ng-submit="canvasForm.$valid && canvas.addMessage()" novalidate>
+<!--               <li ng-repeat="message in canvas.messages | limitTo: 0">{{message.text}}</li>
+ -->              <form name="canvasForm" ng-submit="canvasForm.$valid && canvas.addMessage()" novalidate>
                 <input class="new-message" name="message"
-                placeholder="{{canvas.info.format[canvas.info.counter]}}"
+                placeholder="{{data.info.format[data.info.counter]}}"
                 ng-model="canvas.newMessageText"
                 ng-focus="canvas.toggleOn()"
                 ng-blur="canvas.toggleOff()"
                 required />
               </form>
             </ul>
-            <p>Total lines: {{canvas.messageCount}}</p>
+            <p>Total words submitted: {{data.info.wordCount}}</p>
+            <p>Words remaining to unlock: {{data.info.wordsNeeded - data.info.wordCount}}</p>
           </div>
         </div>
       </div>
@@ -34,10 +38,11 @@
       <div class="row">
         <div class="col-sm-12">
           <div bs-collapse start-collapsed=true>
-            <a class="btn btn-primary" bs-collapse-toggle ng-click="canvas.users()">Results</a>
+            <button class="btn btn-primary" bs-collapse-toggle data-ng-disabled="data.info.wordCount < data.info.wordsNeeded"
+            ng-click="canvas.users()">Results</button>
             <div class="results" bs-collapse-target>
               <p><ul>
-                <li ng-repeat="message in canvas.messages" class="{{message.user}}">{{message.text}}&nbsp;</li>
+                <li ng-repeat="message in data.messages" class="{{message.user}}">{{message.text}}&nbsp;</li>
               </ul></p>
             </div>
           </div>
@@ -50,10 +55,9 @@
     <div class="col-sm-12 col-md-4">
 
       <div ng-include="'login/login-sidebar.html'"></div>
-
-      <div ng-include="'canvas/controls.html'"></div>
-
+      <div ng-include="'includes/about.html'"></div>
       <div ng-include="'browse/browse.html'"></div>
+      <div ng-include="'canvas/controls.html'"></div>
 
     </div><!--end col-md-4 -->
 

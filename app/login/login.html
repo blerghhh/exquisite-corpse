@@ -2,24 +2,36 @@
 
 <div class="container">
 
-<div class="row">
-  <form name="loginForm" ng-submit="auth.login()" novalidate>
-    <h2>Login</h2>
+  <div class="row">
+    <div class="col-sm-12 col-md-4 col-centered">
+      <div class="panel panel-default">
+        <div class="panel-heading">Login</div>
+        <div class="panel-body">
+          <form name="loginForm" ng-submit="loginForm.$valid && auth.login()" novalidate>
 
-    <label>Username</label>
-    <input type="text" placeholder="corpseguy4ever" ng-model="auth.user.username" required>
+            <div class="form-group">
+              <label>Username</label>
+              <input type="text" class="form-control" placeholder="corpseguy4ever" ng-model="auth.user.username">
+            </div>
 
-    <label>Email</label>
-    <input type="email" placeholder="your@email.com" ng-model="auth.user.email" required>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" class="form-control" placeholder="your@email.com" ng-model="auth.user.email" required>
+            </div>
 
-    <label>Password</label>
-    <input type="password" placeholder="p@$$w0rd" ng-model="auth.user.password" required>
+            <div class="form-group">
+              <label>Password</label>
+              <input type="password" class="form-control" placeholder="p@$$w0rd" ng-model="auth.user.password" required>
+            </div>
 
-    <div class="btn btn-small btn-success" ng-click="auth.register()">Register</div>
-    <input class="btn btn-small btn-primary" type="submit" class="button small" value="Login">
-    <div class="btn btn-small btn-warning" ng-click="auth.resetPassword()">Forgot Password?</div>
+            <div class="form-group">
+              <div class="btn btn-small btn-success" ng-click="auth.register()">Register</div>
+              <input class="btn btn-small btn-primary" type="submit" class="button small" value="Login">
+              <div class="btn btn-small btn-warning" ng-click="auth.resetPassword()">Forgot Password?</div>
+            </div>
 
-    </ul>
-  </form>
-</div>
-</div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

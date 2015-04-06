@@ -1,15 +1,23 @@
+$brand-primary:         #73A6A4;
+$brand-secondary:       #6E6E6D;
+$brand-tertiary:        #D9D6D0;
+$brand-success:         #5cb85c !default;
+$brand-info:            #5bc0de !default;
+$brand-warning:         #f0ad4e !default;
+$brand-danger:          #d9534f !default;
+
 @import '../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap';
 @import url(https://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Roboto:400,700,700italic,400italic);
 
-h1 {
-  color: black;
+.col-centered {
+  margin: 0 auto;
+  float: none;
 }
 
 .canvas {
   background: white;
   font-size: 1.75rem;
   display: inline-block;
-  min-width: 360px;
   .new-message {
     border: 0;
     border-bottom: 1px solid lightgray;
@@ -32,9 +40,42 @@ h1 {
   }
 }
 
+.format {
+  list-style: none;
+  li {
+    display: inline-block;
+  }
+}
+
+.active {
+  font-weight: bold;
+}
+
 .results {
   font-size: 1.75rem;
   ul li {
     display: inline-block;
+  }
+}
+
+.panel {
+  border: 0;
+  background-color: $gray-lighter;
+}
+
+.panel-default>.panel-heading {
+  background-color: $brand-secondary;
+  color:white;
+  transition: 300ms ease all;
+  a {
+    color: white;
+    &:hover {
+      color: white;
+      text-decoration: none;
+    }
+  }
+  &:hover {
+    background-color: darken($brand-primary, 6%);
+    transition: 300ms ease all;
   }
 }

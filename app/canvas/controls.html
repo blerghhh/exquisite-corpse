@@ -1,17 +1,21 @@
-<div class="row" ng-controller="CanvasCtrl as canvas" bs-collapse>
+<div class="row" ng-controller="CanvasCtrl as canvas" bs-collapse start-collapsed="true">
   <div class="col-sm-12">
     <div class="panel panel-default">
-      <div class="panel-heading" bs-collapse-toggle>New Canvas</div>
+      <div class="panel-heading" bs-collapse-toggle>New Story</div>
       <div class="panel-body" bs-collapse-target>
-        <form name="newCanvasForm" ng-submit="canvas.createCanvas()" novalidate>
+        <form name="newCanvasForm" ng-submit="newCanvasForm.$valid && canvas.createCanvas()" novalidate>
           <div class="form-group">
             <label>Name</label>
-            <input name="canvasName" class="form-control" type="text" placeholder="My Canvas" ng-model="canvas.canvasName" required>
+            <input name="canvasName" class="form-control" type="text" placeholder="My Story" ng-model="canvas.canvasName" required>
           </div>
           <div class="form-group">
             <label>Sentence format</label>
             <p>Ex: article adjective noun auxiliary-verb verb article adjective noun</p>
             <textarea name="canvasFormat" class="form-control" type="text" ng-model="canvas.canvasFormat" required></textarea>
+          </div>
+          <div class="form-group">
+            <label>Minumum word count</label>
+            <input name="canvasWordCount" class="form-control" type="number" ng-model="canvas.canvasWordsNeeded" placeholder="20" required>
           </div>
           <div class="checkbox">
             <label class="checkbox-inline">
@@ -19,7 +23,7 @@
             </label>
           </div>
           <div class="form-group">
-            <input type="submit" class="btn btn-success">
+            <input type="submit" class="btn btn-primary">
           </div>
         </form>
       </div>
