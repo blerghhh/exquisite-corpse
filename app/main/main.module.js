@@ -1,1 +1,9 @@
-angular.module('exquisite', ['ngRoute', 'firebase', 'mgcrea.ngStrap', 'mgcrea.ngStrap.navbar', 'mgcrea.ngStrap.collapse']);
+angular
+  .module('exquisite',
+    ['ngRoute',
+    'ngMessages',
+    'firebase',
+    'mgcrea.ngStrap',
+    'mgcrea.ngStrap.navbar',
+    'mgcrea.ngStrap.collapse'
+    ]);

@@ -21,11 +21,19 @@ $brand-danger:          #d9534f !default;
   .new-message {
     border: 0;
     border-bottom: 1px solid lightgray;
-    width: 100%;
+    margin: 1em 0;
     &:focus {
       outline: 0;
     }
   }
+}
+
+.alert-danger {
+  border: 0;
+  font-size: 1.25rem;
+  background: none;
+  color: $brand-danger;
+  padding: 0;
 }
 
 .navbar-nav {
@@ -60,8 +68,6 @@ $brand-danger:          #d9534f !default;
     }
   }
 }
-
-
 
 .active {
   font-weight: bold;

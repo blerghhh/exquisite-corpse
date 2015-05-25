@@ -21,7 +21,14 @@
                   ng-model="canvas.newMessageText"
                   ng-focus="canvas.toggleOn()"
                   ng-blur="canvas.toggleOff()"
+                  ng-maxlength="20"
                   required />
+
+                <div ng-messages="canvasForm.message.$error" ng-if="canvasForm.message.$dirty" role="alert">
+                  <div ng-message="required" class="alert alert-danger">Type your word and press enter!</div>
+                  <div ng-message="maxlength" class="alert alert-danger">Your word too long. Words must be less than 20 characters.</div>
+                </div>
+
               </form>
 
             <div class="canvas-info">
