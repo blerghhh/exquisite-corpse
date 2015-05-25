@@ -10,25 +10,26 @@
         <div class="col-sm-12">
           <div class="canvas">
 
-            <h1>{{data.info.name}}</h1>
+              <h1>{{data.info.name}}</h1>
+              <ul class="canvas-format">
+                <li ng-repeat="word in data.info.format track by $index" ng-class="{'active': $index == data.info.counter}">{{word}}&nbsp;</li>
+              </ul>
 
-            <ul class="format">
-              <li ng-repeat="word in data.info.format" ng-class="{'active': word == data.info.format[data.info.counter]}">{{word}}&nbsp;</li>
-            </ul>
-
-            <ul>
-<!--               <li ng-repeat="message in canvas.messages | limitTo: 0">{{message.text}}</li>
- -->              <form name="canvasForm" ng-submit="canvasForm.$valid && canvas.addMessage()" novalidate>
+              <form name="canvasForm" ng-submit="canvasForm.$valid && canvas.addMessage()" novalidate>
                 <input class="new-message" name="message"
-                placeholder="{{data.info.format[data.info.counter]}}"
-                ng-model="canvas.newMessageText"
-                ng-focus="canvas.toggleOn()"
-                ng-blur="canvas.toggleOff()"
-                required />
+                  placeholder="{{data.info.format[data.info.counter]}}"
+                  ng-model="canvas.newMessageText"
+                  ng-focus="canvas.toggleOn()"
+                  ng-blur="canvas.toggleOff()"
+                  required />
               </form>
-            </ul>
-            <p>Total words submitted: {{data.info.wordCount}}</p>
-            <p>Words remaining to unlock: {{data.info.wordsNeeded - data.info.wordCount}}</p>
+
+            <div class="canvas-info">
+              <ul>
+                <li>Total words submitted: {{data.info.wordCount}}</li>
+                <li>Words remaining to unlock: {{data.info.wordsNeeded - data.info.wordCount}}</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -38,7 +39,7 @@
       <div class="row">
         <div class="col-sm-12">
           <div bs-collapse start-collapsed=true>
-            <button class="btn btn-primary" bs-collapse-toggle data-ng-disabled="data.info.wordCount < data.info.wordsNeeded"
+            <button class="btn btn-primary results-button" bs-collapse-toggle data-ng-disabled="data.info.wordCount < data.info.wordsNeeded"
             ng-click="canvas.users()">Results</button>
             <div class="results" bs-collapse-target>
               <p><ul>

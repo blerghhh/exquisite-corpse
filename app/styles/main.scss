@@ -28,6 +28,10 @@ $brand-danger:          #d9534f !default;
   }
 }
 
+.navbar-nav {
+  margin: 0;
+}
+
 .canvas,
 .browse,
 .results {
@@ -36,16 +40,28 @@ $brand-danger:          #d9534f !default;
     padding-left: 0;
     li {
       line-height: 1.6;
+      color: $gray-light;
     }
   }
 }
 
-.format {
-  list-style: none;
-  li {
-    display: inline-block;
+.canvas {
+  form {
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+  .canvas-format,
+  .canvas-info {
+    list-style: none;
+    font-style: italic;
+    font-size: 1.5rem;
+    li {
+      display: inline-block;
+    }
   }
 }
+
+
 
 .active {
   font-weight: bold;
@@ -56,6 +72,10 @@ $brand-danger:          #d9534f !default;
   ul li {
     display: inline-block;
   }
+}
+
+.results-button {
+  margin-bottom: 1em;
 }
 
 .panel {

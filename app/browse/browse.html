@@ -7,7 +7,6 @@
           <li ng-repeat="canvas in browse.canvases
           | filter:{'status': {'private': false}}:true">
             <a href="#/canvas/{{canvas.$id}}">{{canvas.info.name}}</a>
-            <span>by {{canvas.info.creator}} {{canvas.user}}</span>
           </li>
         </ul>
       </div>
