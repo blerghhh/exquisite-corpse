@@ -22,11 +22,14 @@
                   ng-focus="canvas.toggleOn()"
                   ng-blur="canvas.toggleOff()"
                   ng-maxlength="20"
+                  ng-pattern="/^[a-zA-Z0-9]*$/"
                   required />
 
                 <div ng-messages="canvasForm.message.$error" ng-if="canvasForm.message.$dirty" role="alert">
                   <div ng-message="required" class="alert alert-danger">Type your word and press enter!</div>
                   <div ng-message="maxlength" class="alert alert-danger">Your word too long. Words must be less than 20 characters.</div>
+                  <div ng-message="pattern" class="alert alert-danger">White space detected. You can only submit one word at a time.</div>
+
                 </div>
 
               </form>
