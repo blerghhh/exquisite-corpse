@@ -5,5 +5,6 @@ angular
     'firebase',
     'mgcrea.ngStrap',
     'mgcrea.ngStrap.navbar',
-    'mgcrea.ngStrap.collapse'
+    'mgcrea.ngStrap.collapse',
+    'mgcrea.ngStrap.modal'
     ]);

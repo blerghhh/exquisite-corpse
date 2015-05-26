@@ -2,7 +2,7 @@ angular
   .module('exquisite')
   .controller('CanvasCtrl', CanvasCtrl);
 
-  function CanvasCtrl ($routeParams, $scope, $location, $firebaseArray, $firebaseObject, canvasFactory, BASE_URL) {
+  function CanvasCtrl ($routeParams, $scope, $modal, $location, $firebaseArray, $firebaseObject, canvasFactory, BASE_URL) {
     var vm               = this,
         fb               = new Firebase(BASE_URL),
         id               = $routeParams.uuid,
@@ -11,16 +11,18 @@ angular
         fbUser           = fb.child('/users/' + user),
         fbCanvas         = fb.child('/canvas/' + id),
         counter,
-        wordCount;
+        wordCount
 
-    vm.messages     = $firebaseArray(fbCanvas.child('/messages'));
-    vm.canvases     = $firebaseArray(fb.child('/canvas'));
-    vm.canvas       = $firebaseObject(fbCanvas);
-    vm.canvasInfo   = $firebaseObject(fbCanvas.child('/info'));
-    vm.messageCount = 0;
+    vm.messages      = $firebaseArray(fbCanvas.child('/messages'));
+    vm.canvases      = $firebaseArray(fb.child('/canvas'));
+    vm.canvas        = $firebaseObject(fbCanvas);
+    vm.canvasInfo    = $firebaseObject(fbCanvas.child('/info'));
+    vm.messageCount  = 0;
 
     vm.canvas.$bindTo($scope, "data").then(function() {
     });
+
+    // vm.partsOfSpeech = $modal({show: true});
 
     canvasFactory.findOne(id, function (data) {
       vm.info = data.info;
