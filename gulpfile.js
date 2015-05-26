@@ -37,13 +37,18 @@ gulp.task('components', function () {
     .pipe(gulp.dest('public/bower_components'));
 });
 
+gulp.task('images', function () {
+  return gulp.src('app/img/**/*')
+    .pipe(gulp.dest('public/img'));
+});
+
 gulp.task('views', function () {
   return gulp.src('app/**/*.html')
     .pipe(gulp.dest('public'));
 });
 
 gulp.task('default', ['clean'], function() {
-    gulp.start('sass', 'views', 'scripts', 'components');
+    gulp.start('sass', 'views', 'scripts', 'components', 'images');
 });
 
 gulp.task('serve', ['default'], function() {
