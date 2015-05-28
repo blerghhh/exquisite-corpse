@@ -105,20 +105,15 @@ angular
 
     };
 
-    vm.users = function() {
-      var arr   = [],
-          users = [];
-
+    vm.userNumber = function(author) {
+      var arr = [];
       for (user in vm.messages) {
         arr.push(vm.messages[user].user);
       }
-
       users = arr.filter(function(elem, index, self) {
       return index === self.indexOf(elem);
       });
-
-      return users;
-
+      return users.indexOf(author);
     };
 
     vm.toggleOn = function() {

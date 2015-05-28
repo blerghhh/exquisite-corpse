@@ -53,7 +53,7 @@
             ng-click="canvas.users()">Results</button>
             <div class="results" bs-collapse-target>
               <p><ul>
-                <li ng-repeat="message in data.messages" class="{{message.user}}">{{message.text}}&nbsp;</li>
+                <li ng-repeat="message in data.messages" class="user{{canvas.userNumber(message.user) + 1}}">{{message.text}}&nbsp;</li>
               </ul></p>
             </div>
           </div>

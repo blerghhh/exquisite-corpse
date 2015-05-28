@@ -9,6 +9,12 @@ $brand-danger:          #d9534f !default;
 @import '../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap';
 @import url(https://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Roboto:400,700,700italic,400italic);
 
+@media (max-width: 768px) {
+  .container {
+    max-width: 600px;
+  }
+}
+
 .col-centered {
   margin: 0 auto;
   float: none;
@@ -48,7 +54,6 @@ $brand-danger:          #d9534f !default;
     padding-left: 0;
     li {
       line-height: 1.6;
-      color: $gray-light;
     }
   }
 }
@@ -122,3 +127,11 @@ $brand-danger:          #d9534f !default;
     }
   }
 }
+
+.user1 {color:darkseagreen};
+.user2 {color: maroon};
+.user3 {color: teal};
+.user4 {color: peru};
+.user5 {color: cadetblue};
+.user6 {color:plum};
+.user7 {color: coral};
