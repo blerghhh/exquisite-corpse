@@ -2,7 +2,7 @@ angular
   .module('exquisite')
   .controller('CanvasCtrl', CanvasCtrl);
 
-  function CanvasCtrl ($routeParams, $scope, $modal, $location, $firebaseArray, $firebaseObject, canvasFactory, BASE_URL) {
+  function CanvasCtrl ($routeParams, $scope, $location, $firebaseArray, $firebaseObject, canvasFactory, BASE_URL) {
     var vm               = this,
         fb               = new Firebase(BASE_URL),
         id               = $routeParams.uuid,
@@ -22,8 +22,6 @@ angular
     vm.canvas.$bindTo($scope, "data").then(function() {
     });
 
-    // vm.partsOfSpeech = $modal({show: true});
-
     canvasFactory.findOne(id, function (data) {
       vm.info = data.info;
       counter = vm.info.counter;
@@ -32,9 +30,9 @@ angular
     });
 
     vm.messages.$loaded().then(function(data){
-        vm.messageCount = data.length;
-        return vm.messageCount;
-      });
+      vm.messageCount = data.length;
+      return vm.messageCount;
+    });
 
     vm.canvas.$loaded().then(function(data){
 
@@ -78,26 +76,6 @@ angular
         data.lastUser = user;
         data.$save();
       });
-
-      // if (vm.info.counter < vm.info.format.length - 1) {
-      //   vm.messages.$add({
-      //     text: vm.newMessageText,
-      //     user: user
-      //   });
-      // } else {
-      //   vm.messages.$add({
-      //     text: vm.newMessageText + '.',
-      //     user: user
-      //   });
-      // }
-
-      // vm.newMessageText = null;
-      // vm.messageCount = vm.messageCount + 1;
-      // if (vm.messageCount < vm.info.wordCount) {
-      //   vm.messagesRemaining = vm.info.wordCount - vm.messageCount;
-      // } else {
-      //   vm.messagesRemaining = 0;
-      // }
 
     };
 
