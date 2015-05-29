@@ -6,8 +6,28 @@
 
     <div class="col-sm-12 col-md-8">
       <h1>Profile</h1>
-      <p>{{profile.user.username}}</p>
-      <p>{{profile.user.email}}</p>
+      <p><strong>Username:</strong> {{profile.user.username}}</p>
+      <p><strong>Email:</strong> {{profile.user.email}}</p>
+      <p><strong>Name:</strong> {{profile.user.name}}</p>
+
+      <form name="profileForm" ng-submit="profileForm.$valid && profile.updateProfile()" novalidate>
+        <input name="name"
+          placeholder="Name"
+          ng-model="profile.user.name"
+          ng-maxlength="20"
+          ng-pattern="/^[A-Za-z ]+$/"
+          required />
+        <input class="btn btn-small btn-primary" type="submit" class="button small" value="Save">
+
+
+        <div ng-messages="profileForm.firstName.$error" ng-if="profileForm.firstName.$dirty" role="alert">
+          <div ng-message="required" class="alert alert-danger">Type your word and press enter!</div>
+          <div ng-message="maxlength" class="alert alert-danger">Your word too long. Words must be less than 20 characters.</div>
+          <div ng-message="pattern" class="alert alert-danger">White space detected. You can only submit one word at a time.</div>
+        </div>
+
+      </form>
+
     </div>
 
     <div class="col-sm-12 col-md-4">

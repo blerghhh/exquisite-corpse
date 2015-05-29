@@ -11,4 +11,11 @@ function ProfileCtrl($routeParams, profileFactory, BASE_URL) {
     vm.user = user;
   });
 
+  vm.updateProfile = function(){
+    var profileData = {
+      name: vm.user.name,
+    };
+    fb.child('users/' + id + "/profile").update(profileData);
+  };
+
 }
