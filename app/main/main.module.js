@@ -1,10 +1,12 @@
 angular
   .module('exquisite',
     ['ngRoute',
+    'ngAnimate',
     'ngMessages',
     'firebase',
     'mgcrea.ngStrap',
     'mgcrea.ngStrap.navbar',
+    'mgcrea.ngStrap.aside',
     'mgcrea.ngStrap.collapse',
     'mgcrea.ngStrap.modal'
     ]);

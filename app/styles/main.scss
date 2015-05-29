@@ -7,6 +7,8 @@ $brand-warning:         #f0ad4e !default;
 $brand-danger:          #d9534f !default;
 
 @import '../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap';
+@import '../../bower_components/bootstrap-additions/dist/bootstrap-additions.min.css';
+@import '../../bower_components/angular-motion/dist/angular-motion.min.css';
 @import url(https://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Roboto:400,700,700italic,400italic);
 
 @media (max-width: 768px) {
@@ -108,23 +110,6 @@ $brand-danger:          #d9534f !default;
   &:hover {
     background-color: darken($brand-primary, 6%);
     transition: 300ms ease all;
-  }
-}
-
-.modal-backdrop.am-fade {
-  opacity: .5;
-  transition: opacity .15s linear;
-  &.ng-enter {
-    opacity: 0;
-    &.ng-enter-active {
-      opacity: .5;
-    }
-  }
-  &.ng-leave {
-    opacity: .5;
-    &.ng-leave-active {
-      opacity: 0;
-    }
   }
 }
 
