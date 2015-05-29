@@ -7,7 +7,6 @@ angular
         fb               = new Firebase(BASE_URL),
         id               = $routeParams.uuid,
         user             = fb.getAuth().uid,
-        users            = [],
         fbUser           = fb.child('/users/' + user),
         fbCanvas         = fb.child('/canvas/' + id),
         counter,
@@ -19,36 +18,17 @@ angular
     vm.canvasInfo    = $firebaseObject(fbCanvas.child('/info'));
     vm.messageCount  = 0;
 
-    vm.canvas.$bindTo($scope, "data").then(function() {
-    });
+    vm.canvas.$bindTo($scope, "data");
 
-    canvasFactory.findOne(id, function (data) {
-      vm.info = data.info;
+    canvasFactory.findOne(id, function (canvas) {
+      vm.info = canvas.info;
       counter = vm.info.counter;
       wordCount = vm.info.wordCount;
-
     });
 
-    vm.messages.$loaded().then(function(data){
-      vm.messageCount = data.length;
+    vm.messages.$loaded().then(function(messages){
+      vm.messageCount = messages.length;
       return vm.messageCount;
-    });
-
-    vm.canvas.$loaded().then(function(data){
-
-      if (data.messages) {
-        vm.messageCount = Object.keys(data.messages).length;
-        if (vm.messageCount < data.info.wordCount) {
-          vm.messagesRemaining = data.info.wordCount - vm.messageCount;
-        } else {
-          vm.messagesRemaining = 0;
-        }
-      } else {
-        vm.messageCount = 0;
-        vm.messagesRemaining = data.info.wordCount;
-      }
-
-      return vm.messagesRemaining;
     });
 
     ///////// Functions ///////////
