@@ -20,4 +20,8 @@ function NavCtrl ($location, $http, BASE_URL) {
   vm.isLoggedIn = function() {
     return !!fb.getAuth();
   };
+
+  vm.sidebarToggle = function() {
+    $(".wrapper").toggleClass("toggled");
+  };
 }

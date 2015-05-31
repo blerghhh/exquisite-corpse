@@ -18,4 +18,8 @@ function ProfileCtrl($routeParams, profileFactory, BASE_URL) {
     fb.child('users/' + id + "/profile").update(profileData);
   };
 
+  vm.sidebarToggle = function() {
+    $("#wrapper").toggleClass("toggled");
+  };
+
 }
