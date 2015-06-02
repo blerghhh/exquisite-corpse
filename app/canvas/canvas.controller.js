@@ -2,10 +2,10 @@ angular
   .module('exquisite')
   .controller('CanvasCtrl', CanvasCtrl);
 
-  function CanvasCtrl ($routeParams, $scope, $location, $firebaseArray, $firebaseObject, canvasFactory, BASE_URL) {
+  function CanvasCtrl ($stateParams, $scope, $location, $firebaseArray, $firebaseObject, canvasFactory, BASE_URL) {
     var vm               = this,
         fb               = new Firebase(BASE_URL),
-        id               = $routeParams.uuid,
+        id               = $stateParams.uuid,
         user             = fb.getAuth().uid,
         fbUser           = fb.child('/users/' + user),
         fbCanvas         = fb.child('/canvas/' + id),

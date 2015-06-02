@@ -1,50 +1,8 @@
-<div class="wrapper toggled">
-<div ng-include="'nav/navbar.html'"></div>
-<div ng-include="'sidebar/sidebar.html'"></div>
-<div class="page-content-wrapper">
-<div class="container-fluid">
-
-  <div class="row">
+<div class="row">
 
     <div class="col-xs-12 col-sm-12 col-md-8">
 
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="canvas">
-
-              <h1>{{data.info.name}}</h1>
-              <ul class="canvas-format">
-                <li ng-repeat="word in data.info.format track by $index" ng-class="{'active': $index == data.info.counter}">{{word}}&nbsp;</li>
-              </ul>
-
-              <form name="canvasForm" ng-submit="canvasForm.$valid && canvas.addMessage()" novalidate>
-                <input class="new-message" name="message"
-                  placeholder="{{data.info.format[data.info.counter]}}"
-                  ng-model="canvas.newMessageText"
-                  ng-focus="canvas.toggleOn()"
-                  ng-blur="canvas.toggleOff()"
-                  ng-maxlength="20"
-                  ng-pattern="/^[a-zA-Z0-9]*$/"
-                  required />
-
-                <div ng-messages="canvasForm.message.$error" ng-if="canvasForm.message.$dirty" role="alert">
-                  <div ng-message="required" class="alert alert-danger">Type your word and press enter!</div>
-                  <div ng-message="maxlength" class="alert alert-danger">Your word too long. Words must be less than 20 characters.</div>
-                  <div ng-message="pattern" class="alert alert-danger">White space detected. You can only submit one word at a time.</div>
-
-                </div>
-
-              </form>
-
-            <div class="canvas-info">
-              <ul>
-                <li>Total words submitted: {{data.info.wordCount}}</li>
-                <li>Words remaining to unlock: {{data.info.wordsNeeded - data.info.wordCount}}</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
+        <div ui-view></div>
 
       <hr>
 
@@ -67,13 +25,8 @@
 
     <div class="col-xs-2 col-sm-12 col-md-4">
 
-      <div ng-include="'login/login-sidebar.html'"></div>
       <div ng-include="'includes/about.html'"></div>
-      <div ng-include="'browse/browse.html'"></div>
-      <div ng-include="'canvas/controls.html'"></div>
 
     </div><!--end col-md-4 -->
 
   </div>
-</div><!--end #page-content-wrapper-->
-</div><!--end #wrapper-->

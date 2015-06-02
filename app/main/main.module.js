@@ -1,6 +1,7 @@
 angular
   .module('exquisite',
     ['ngRoute',
+    'ui.router',
     'ngAnimate',
     'ngMessages',
     'firebase',

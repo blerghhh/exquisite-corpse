@@ -2,9 +2,9 @@ angular
   .module('exquisite')
   .factory('canvasFactory', canvasFactory);
 
-function canvasFactory($http, $firebaseArray, $firebaseObject, $routeParams, BASE_URL) {
+function canvasFactory($http, $firebaseArray, $firebaseObject, $stateParams, BASE_URL) {
   var fb       = new Firebase(BASE_URL),
-      id       = $routeParams.uuid,
+      id       = $stateParams.uuid,
       user     = fb.getAuth().uid,
       fbCanvas = fb.child('canvas/' + id),
       messages = $firebaseArray(fbCanvas.child('/messages')),
@@ -13,7 +13,7 @@ function canvasFactory($http, $firebaseArray, $firebaseObject, $routeParams, BAS
       canvas   = {};
 
   canvas.addMessage = function(data) {
-    id = $routeParams.uuid;
+    id = $stateParams.uuid;
     fbCanvas = fb.child('canvas/' + id);
     messages = $firebaseArray(fbCanvas.child('/messages'));
 

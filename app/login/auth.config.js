@@ -1,39 +1,39 @@
 angular
   .module('exquisite')
   .config(authConfig)
-  .run(privateRoutes);
+  .run(privateStates);
 
-function authConfig($routeProvider) {
-  $routeProvider
-    .when('/login', {
+function authConfig($stateProvider) {
+  $stateProvider
+    .state('login', {
+      url: '/login',
       templateUrl: 'login/login.html',
-      controller: 'AuthCtrl',
-      controllerAs: 'auth',
+      controller: 'AuthCtrl as auth',
+      private: false,
       resolve: {
         data: function ($location, authFactory) {
           if (authFactory.isLoggedIn()) {
-            $location.path('/canvas');
+            $location.path('/');
           }
         }
       }
     })
-    .when('/logout', {
-      template: '',
+    .state('logout', {
+      url: '/logout',
       controller: 'LogoutCtrl'
     });
-}
+};
 
-function privateRoutes($location, authFactory, $rootScope) {
-   $rootScope.$on('$routeChangeStart', function (event, nextRoute) {
-
-    $rootScope.user = authFactory.getAuth();
+function privateStates($location, authFactory, $rootScope, $state) {
+   $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
 
     if (loginRequired()) {
       $location.path('/login');
+      $state.go('login', {}, {reload: true});
     }
 
     function loginRequired() {
-      return nextRoute.$$route && nextRoute.$$route.private && !authFactory.isLoggedIn();
+      return toState.private && !authFactory.isLoggedIn();
     }
   });
 }

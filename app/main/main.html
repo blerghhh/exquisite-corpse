@@ -1,3 +1,9 @@
-<h1>Main</h1>
-<div class="canvas"></div>
-<input type="text">
+<div class="wrapper">
+  <div ng-include="'nav/navbar.html'"></div>
+  <div ng-include="'sidebar/sidebar.html'"></div>
+  <div class="page-content-wrapper">
+    <div class="container-fluid">
+      <div ui-view></div>
+    </div>
+  </div>
+</div>

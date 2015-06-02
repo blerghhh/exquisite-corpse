@@ -1,8 +1,8 @@
-<div class="row" ng-controller="BrowseCtrl as browse" bs-collapse>
+<div class="row" ng-controller="BrowseCtrl as browse">
   <div class="col-sm-12">
     <div class="panel panel-default browse">
-      <div class="panel-heading" bs-collapse-toggle>Browse</div>
-      <div class="panel-body" bs-collapse-target>
+      <div class="panel-heading">Browse</div>
+      <div class="panel-body">
         <ul>
           <li ng-repeat="canvas in browse.canvases
           | filter:{'status': {'private': false}}:true">
