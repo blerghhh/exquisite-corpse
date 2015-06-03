@@ -1,10 +1,10 @@
 <div class="col-sm-12">
-  <h4>Your Stories</h4>
-  <ul class="user-stories">
-    <li ng-repeat="canvas in profile.canvases
+  <h3>Your Stories</h3>
+  <table class="table table-hover stories-table">
+    <tr ng-repeat="canvas in profile.canvases
     | filter:{'info': {'creator': profile.userId}}:true">
-      <a href="#/canvas/{{canvas.$id}}">{{canvas.info.name}}</a>
-      <a ng-click="profile.removeStory(canvas.$id)"><i class="fa fa-times"></i></a>
-    </li>
-  </ul>
+      <td><a href="#/canvas/{{canvas.$id}}">{{canvas.info.name}}</a></td>
+      <td><button class="btn btn-primary btn-xs" ng-click="profile.removeStory(canvas.$id)"><i class="fa fa-times"></i> Delete</button></td>
+    </tr>
+  </table>
 </div>
