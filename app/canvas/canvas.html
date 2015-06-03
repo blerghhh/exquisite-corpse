@@ -1,32 +1,22 @@
 <div class="row">
+  <div class="col-sm-12">
+    <div class="panel panel-default canvas" ui-view></div>
 
-    <div class="col-xs-12 col-sm-12 col-md-8">
+    <hr>
 
-        <div ui-view></div>
-
-      <hr>
-
-      <div class="row">
-        <div class="col-sm-12">
-          <div bs-collapse start-collapsed=true>
-            <button class="btn btn-primary results-button" bs-collapse-toggle data-ng-disabled="data.info.wordCount < data.info.wordsNeeded"
-            ng-click="canvas.users()">Results</button>
-            <div class="results" bs-collapse-target>
-              <p><ul>
+    <div class="row">
+      <div class="col-sm-12">
+        <div bs-collapse start-collapsed=true>
+          <button class="btn btn-primary results-button" bs-collapse-toggle data-ng-disabled="data.info.wordCount < data.info.wordsNeeded" ng-click="canvas.users()">Results</button>
+          <div class="results" bs-collapse-target>
+            <p>
+              <ul>
                 <li ng-repeat="message in data.messages" class="user{{canvas.userNumber(message.user) + 1}}">{{message.text}}&nbsp;</li>
-              </ul></p>
-            </div>
+              </ul>
+            </p>
           </div>
         </div>
       </div>
-
-
-    </div><!--end col-md-8 -->
-
-    <div class="col-xs-2 col-sm-12 col-md-4">
-
-      <div ng-include="'includes/about.html'"></div>
-
-    </div><!--end col-md-4 -->
+    </div>
 
   </div>

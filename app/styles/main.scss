@@ -5,12 +5,22 @@ $brand-success:         #5cb85c !default;
 $brand-info:            #5bc0de !default;
 $brand-warning:         #f0ad4e !default;
 $brand-danger:          #d9534f !default;
+$gray-lightest:         #f8f8f8;
 
 @import '../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap';
 @import '../../bower_components/bootstrap-additions/dist/bootstrap-additions.min.css';
 @import '../../bower_components/angular-motion/dist/angular-motion.min.css';
 @import '../../bower_components/font-awesome/css/font-awesome.min.css';
 @import url(https://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Roboto:400,700,700italic,400italic);
+
+body, .wrapper {
+  background: $gray-lightest;
+}
+
+.main {
+  max-width: 600px;
+  margin: 0 auto;
+}
 
 @media (max-width: 768px) {
   .container {
@@ -106,25 +116,14 @@ input.minimal {
 }
 
 .panel {
-  border: 0;
-  background-color: $gray-lighter;
+  border-radius: 0;
+  margin: 0 auto;
+  display: block;
+  background-color: white;
 }
 
 .panel-default>.panel-heading {
-  background-color: $brand-secondary;
-  color:white;
-  transition: 300ms ease all;
-  a {
-    color: white;
-    &:hover {
-      color: white;
-      text-decoration: none;
-    }
-  }
-  &:hover {
-    background-color: darken($brand-primary, 6%);
-    transition: 300ms ease all;
-  }
+  background-color: white;
 }
 
 .user1 {color:darkseagreen};
