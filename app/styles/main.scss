@@ -33,20 +33,6 @@ body, .wrapper {
   float: none;
 }
 
-.canvas {
-  background: white;
-  font-size: 1.75rem;
-  display: inline-block;
-  .new-message {
-    border: 0;
-    border-bottom: 1px solid lightgray;
-    margin: 1em 0;
-    &:focus {
-      outline: 0;
-    }
-  }
-}
-
 input.minimal {
   display: block;
   border: 0;
@@ -84,28 +70,12 @@ input.minimal {
   }
 }
 
-.canvas {
-  form {
-    margin-top: 1em;
-    margin-bottom: 1em;
-  }
-  .canvas-format,
-  .canvas-info {
-    list-style: none;
-    font-style: italic;
-    font-size: 1.5rem;
-    li {
-      display: inline-block;
-    }
-  }
-}
-
 .active {
   font-weight: bold;
 }
 
 .results {
-  font-size: 1.75rem;
+  font-size: 2rem;
   ul li {
     display: inline-block;
   }
@@ -277,4 +247,60 @@ input.minimal {
   tr td:last-child {
     text-align: right;
   }
+}
+
+/* Canvas styles */
+
+.canvas {
+  background: white;
+  font-size: 2rem;
+  display: block;
+  .canvas-form {
+    min-height: 5em;
+  }
+  .new-message {
+    width: 100%;
+    border: 0;
+    padding-bottom: 0.25em;
+    margin-bottom: 0.25em;
+    border-bottom: 1px solid lightgray;
+    &:focus {
+      outline: 0;
+    }
+  }
+}
+
+.canvas-format,
+.canvas-info {
+  padding: 0;
+  list-style: none;
+  font-style: italic;
+  font-size: 1.5rem;
+  ul {
+    text-align: right;
+    padding: 0;
+    margin-top: 1em;
+  }
+  li {
+    list-style: none;
+  }
+}
+
+.canvas-format {
+  li {
+    display: inline-block;
+  }
+}
+
+.canvas .alert {
+  margin-bottom: 0;
+}
+
+.results ul li {
+  transition: text-shadow 2s ease;
+}
+
+.blur li {
+  color: transparent;
+  text-shadow: 0 0 12px rgba(0,0,0,0.4);
 }

@@ -117,4 +117,8 @@ angular
       });
     };
 
+    vm.viewResults = function() {
+      return data.wordsNeeded > data.wordCount;
+    };
+    
   }

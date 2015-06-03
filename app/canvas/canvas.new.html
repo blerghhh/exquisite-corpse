@@ -1,5 +1,3 @@
-<div class="row" ng-controller="CanvasCtrl as canvas">
-  <div class="col-sm-12">
     <div class="panel panel-default">
       <div class="panel-heading">New Story</div>
       <div class="panel-body">
@@ -25,8 +23,13 @@
           <div class="form-group">
             <input type="submit" class="btn btn-primary">
           </div>
+
+          <div ng-messages="NewCanvasForm.message.$error" ng-if="NewCanvasForm.message.$dirty" role="alert">
+            <div ng-message="required" class="alert alert-danger">Type your word and press enter!</div>
+            <div ng-message="maxlength" class="alert alert-danger">Your word too long. Words must be less than 20 characters.</div>
+            <div ng-message="pattern" class="alert alert-danger">White space detected. You can only submit one word at a time.</div>
+          </div>
+
         </form>
       </div>
     </div>
-  </div>
-</div>

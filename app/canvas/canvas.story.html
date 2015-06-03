@@ -1,25 +1,14 @@
-<div class="panel-heading">{{data.info.name}}</div>
-<div class="panel-body">
-  <ul class="canvas-format">
-    <li ng-repeat="word in data.info.format track by $index" ng-class="{'active': $index == data.info.counter}">{{word}}&nbsp;</li>
-  </ul>
+<form name="canvasForm" class="canvas-form" ng-submit="canvasForm.$valid && canvas.addMessage()" novalidate>
+  <input class="new-message" name="message" placeholder="{{data.info.format[data.info.counter]}}" ng-model="canvas.newMessageText" ng-focus="canvas.toggleOn()" ng-blur="canvas.toggleOff()" ng-maxlength="20" ng-pattern="/^[a-zA-Z0-9\S]*$/" required />
+  <div ng-include="'canvas/canvas.validation.html'"></div>
+</form>
 
-  <form name="canvasForm" ng-submit="canvasForm.$valid && canvas.addMessage()" novalidate>
-    <input class="new-message" name="message" placeholder="{{data.info.format[data.info.counter]}}" ng-model="canvas.newMessageText" ng-focus="canvas.toggleOn()" ng-blur="canvas.toggleOff()" ng-maxlength="20" ng-pattern="/^[a-zA-Z0-9]*$/" required />
-
-    <div ng-messages="canvasForm.message.$error" ng-if="canvasForm.message.$dirty" role="alert">
-      <div ng-message="required" class="alert alert-danger">Type your word and press enter!</div>
-      <div ng-message="maxlength" class="alert alert-danger">Your word too long. Words must be less than 20 characters.</div>
-      <div ng-message="pattern" class="alert alert-danger">White space detected. You can only submit one word at a time.</div>
-
+<div class="row">
+  <div class="col-sm-12">
+      <div class="results">
+          <ul ng-class="{'blur': data.info.wordCount < data.info.wordsNeeded}">
+            <li ng-repeat="message in data.messages" class="user{{canvas.userNumber(message.user) + 1}} large">{{message.text}}&nbsp;</li>
+          </ul>
     </div>
-
-  </form>
-
-  <div class="canvas-info">
-    <ul>
-      <li>Total words submitted: {{data.info.wordCount}}</li>
-      <li>Words remaining to unlock: {{data.info.wordsNeeded - data.info.wordCount}}</li>
-    </ul>
   </div>
 </div>
