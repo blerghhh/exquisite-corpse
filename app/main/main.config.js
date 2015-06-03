@@ -38,8 +38,8 @@ function exquisiteConfig($stateProvider, $urlRouterProvider) {
       controller: 'CanvasCtrl as canvas',
       private: true
     })
-    .state('main.users/:uuid/profile', {
-      url: '/users/:uuid/profile',
+    .state('main.profile', {
+      url: '/profile',
       templateUrl: 'profile/profile.html',
       controller: 'ProfileCtrl as profile',
       private: true
