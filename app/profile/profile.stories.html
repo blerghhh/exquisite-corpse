@@ -4,6 +4,7 @@
     <li ng-repeat="canvas in profile.canvases
     | filter:{'info': {'creator': profile.userId}}:true">
       <a href="#/canvas/{{canvas.$id}}">{{canvas.info.name}}</a>
+      <a ng-click="profile.removeStory(canvas.$id)"><i class="fa fa-times"></i></a>
     </li>
   </ul>
 </div>
