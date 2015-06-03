@@ -1,0 +1,9 @@
+<div class="col-sm-12">
+  <h1>Your Stories</h1>
+  <ul class="user-stories">
+    <li ng-repeat="canvas in profile.canvases
+    | filter:{'info': {'creator': profile.userId}}:true">
+      <a href="#/canvas/{{canvas.$id}}">{{canvas.info.name}}</a>
+    </li>
+  </ul>
+</div>
