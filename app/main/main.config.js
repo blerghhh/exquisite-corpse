@@ -40,7 +40,13 @@ function exquisiteConfig($stateProvider, $urlRouterProvider) {
     })
     .state('main.profile', {
       url: '/profile',
-      templateUrl: 'profile/profile.html',
+      templateUrl: 'profile/profile.controls.html',
+      controller: 'ProfileCtrl as profile',
+      private: true
+    })
+    .state('main.profile/:username', {
+      url: '/profile/:username',
+      templateUrl: 'profile/profile.browse.html',
       controller: 'ProfileCtrl as profile',
       private: true
     });

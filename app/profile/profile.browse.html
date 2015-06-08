@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="panel panel-default profile">
+      <div class="panel-body">
+
+          <h3>{{profile.username}}'s Stories</h3>
+          <table class="table table-hover">
+            <tr ng-repeat="canvas in profile.canvases
+            | filter:{'info': {'creator': profile.username}}:true">
+              <td><a href="#/canvas/{{canvas.$id}}">{{canvas.info.name}} {{profile.username}}</a></td>
+            </tr>
+          </table>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
