@@ -26,9 +26,9 @@ function exquisiteConfig($stateProvider, $urlRouterProvider) {
       templateUrl: 'story/story.html',
       controller: 'StoryCtrl as story'
     })
-    .state('main.story/:uuid.story', {
+    .state('main.story/:uuid.note', {
       url: '',
-      templateUrl: 'story/story.story.html',
+      templateUrl: 'story/story.note.html',
       controller: 'StoryCtrl as story',
       private: true
     })
