@@ -2,7 +2,7 @@ angular
   .module('exquisite')
   .controller('NavCtrl', NavCtrl);
 
-function NavCtrl ($location, $http, $firebaseArray, BASE_URL) {
+function NavCtrl ($location, $scope, $http, $firebaseArray, BASE_URL) {
   var vm       = this,
       fb       = new Firebase(BASE_URL),
       storyIds = [],
@@ -38,6 +38,7 @@ function NavCtrl ($location, $http, $firebaseArray, BASE_URL) {
   vm.randomCanvas = function() {
     var randomCanvas = storyIds[Math.floor(Math.random() * storyIds.length)];
     $location.path('/canvas/' + randomCanvas);
+    $scope.apply();
   };
 
 }
