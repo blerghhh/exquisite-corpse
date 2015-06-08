@@ -3,8 +3,9 @@ angular
   .controller('NavCtrl', NavCtrl);
 
 function NavCtrl ($location, $http, $firebaseArray, BASE_URL) {
-  var vm = this,
-      fb = new Firebase(BASE_URL),
+  var vm       = this,
+      fb       = new Firebase(BASE_URL),
+      storyIds = [],
       id;
 
   if (fb.getAuth()) {
@@ -16,6 +17,16 @@ function NavCtrl ($location, $http, $firebaseArray, BASE_URL) {
       });
   }
 
+  vm.canvases = $firebaseArray(fb.child('/canvas'));
+  vm.canvases.$loaded().then(function(canvases){
+    canvases.forEach(function(i){
+      if (i.status.private === false) {
+        storyIds.push(i.$id);
+      }
+    return storyIds;
+    });
+  });
+
   vm.isLoggedIn = function() {
     return !!fb.getAuth();
   };
@@ -25,18 +36,8 @@ function NavCtrl ($location, $http, $firebaseArray, BASE_URL) {
   };
 
   vm.randomCanvas = function() {
-    var canvases = $firebaseArray(fb.child('/canvas')),
-        arr      = [],
-        randomCanvas;
-    canvases.$loaded().then(function(canvases){
-      canvases.forEach(function(i){
-        if (i.status.private === false) {
-          arr.push(i.$id);
-        }
-      });
-      randomCanvas = arr[Math.floor(Math.random() * arr.length)];
-      $location.path('/canvas/' + randomCanvas);
-    });
+    var randomCanvas = storyIds[Math.floor(Math.random() * storyIds.length)];
+    $location.path('/canvas/' + randomCanvas);
   };
 
 }
