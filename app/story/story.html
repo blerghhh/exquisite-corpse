@@ -3,7 +3,9 @@
 
     <h2>{{data.info.name}}</h2>
     <ul class="story-format">
-      <li ng-repeat="word in data.info.format track by $index" ng-class="{'active': $index == data.info.counter}">{{word}}&nbsp;</li>
+      <li ng-repeat="word in data.info.format track by $index" ng-class="{'active': $index == data.info.counter}">
+        <span data-content="{{popover.content}}" data-template="includes/popovers/popover.{{word}}.html" data-trigger="hover" data-auto-close="1" data-placement="bottom" bs-popover>{{word}}&nbsp;</span>
+      </li>
     </ul>
 
     <div class="panel panel-default story">
