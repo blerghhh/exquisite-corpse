@@ -112,6 +112,40 @@ input.minimal {
 .user6 {color:plum};
 .user7 {color: coral};
 
+/* Forms */
+
+.new-story-form {
+  ul {
+    list-style: none;
+    padding: 0;
+    li {
+      display: inline;
+    }
+    .btn {
+      margin-right: 4px;
+    }
+  }
+}
+
+.fake-textarea {
+  width: 100%;
+  height: auto;
+  min-height: 50px;
+  padding: 6px 12px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+  ul {
+    margin-bottom: 6px;
+  }
+  .btn {
+    margin-top: 8px;
+    margin-right: 4px;
+  }
+}
+
 /* Navbar */
 
 .navbar-header {

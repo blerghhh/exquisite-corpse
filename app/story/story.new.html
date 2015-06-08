@@ -1,15 +1,30 @@
     <div class="panel panel-default">
       <div class="panel-heading">New Story</div>
       <div class="panel-body">
-        <form name="newStoryForm" ng-submit="newStoryForm.$valid && story.createStory()" novalidate>
+        <form name="newStoryForm" class="new-story-form" ng-submit="newStoryForm.$valid && story.createStory()" novalidate>
           <div class="form-group">
             <label>Name</label>
             <input name="storyName" class="form-control" type="text" placeholder="My Story" ng-model="story.storyName" required>
           </div>
           <div class="form-group">
-            <label>Sentence format</label>
-            <p>Ex: article adjective noun auxiliary-verb verb article adjective noun. <a data-animation="am-fade-and-slide-top" data-template="includes/parts-of-speech.html" bs-modal="partsOfSpeech">Review parts of speech</a></p>
-            <textarea name="storyFormat" class="form-control" type="text" ng-model="story.storyFormat" required></textarea>
+            <label>Build your sentence format (or <a ng-click="story.defaultPos()">use the defualt</a>)</label>
+            <ul>
+              <li ng-repeat="pos in story.posArray" >
+                <button class="btn btn-xs btn-primary" ng-click="story.addPos(pos)"
+                 data-template="includes/popovers/popover.{{pos}}.html" data-trigger="hover" data-auto-close="1" data-delay=250 data-placement="bottom" bs-popover>
+                  {{pos}}
+                </button>
+              </li>
+            </ul>
+            <div class="fake-textarea">
+              <ul>
+                <li ng-repeat="word in story.newStoryPosArray track by $index">
+                  <button class="btn btn-xs" ng-click="story.deletePos($index)">{{word}}
+                    <i class="fa fa-times"></i>
+                  </button>
+                </li>
+              </ul>
+            </div>
           </div>
           <div class="form-group">
             <label>Minumum word count</label>

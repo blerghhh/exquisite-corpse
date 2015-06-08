@@ -7,7 +7,7 @@
   <div class="col-sm-12">
       <div class="results">
         <ul ng-class="{'blur': data.info.wordCount < data.info.wordsNeeded}">
-          <li ng-repeat="message in data.messages" class="user{{story.userNumber(message.user) + 1}} large"  data-content="{{popover.content}}" data-template="story/story.popover.html" data-trigger="click" data-auto-close="1" data-placement="bottom"  bs-popover>{{message.text}}&nbsp;
+          <li ng-repeat="message in data.messages" class="user{{story.userNumber(message.user) + 1}} large" data-content="{{popover.content}}" data-template="story/story.popover.html" data-trigger="click" data-auto-close="1" data-placement="bottom"  bs-popover>{{message.text}}&nbsp;
           </li>
         </ul>
     </div>

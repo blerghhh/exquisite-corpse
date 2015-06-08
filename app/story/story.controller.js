@@ -18,6 +18,27 @@ angular
     vm.user        = fb.getAuth().uid;
     vm.currentUser = $firebaseObject(fb.child('/users/' + user));
 
+    vm.posArray = ['article', 'verb', 'noun', 'auxiliary-verb', 'preposition',
+                  'adverb', 'conjunction', 'adjective'];
+    vm.newStoryPosArray = [];
+    vm.posPopover = {delay: {show: 1000, hide: 100}};
+
+    vm.addPos = function(pos) {
+      vm.newStoryPosArray.push(pos);
+    };
+
+    vm.deletePos = function(pos) {
+      var index = pos,
+          plusOne = pos + 1;
+      vm.newStoryPosArray.splice(pos, 1);
+      console.log(vm.newStoryPosArray);
+    };
+
+    vm.defaultPos = function() {
+      vm.newStoryPosArray = ['article', 'adjective', 'noun', 'auxiliary-verb',
+                            'verb', 'article', 'adjective', 'noun'];
+    };
+
     vm.story.$bindTo($scope, "data");
     vm.story.$loaded().then(function(data){
       if (data.messages != undefined) {
@@ -60,7 +81,7 @@ angular
 
     vm.createStory = function() {
       var newStory  = $firebaseArray(fb.child('/story')),
-          format    = vm.storyFormat.split(" "),
+          format    = vm.newStoryPosArray,
           storyData = {
             info: { name: vm.storyName,
                     creator: vm.username,
