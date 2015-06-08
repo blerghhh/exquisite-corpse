@@ -42,6 +42,14 @@ function canvasFactory($http, $firebaseArray, $firebaseObject, $stateParams, BAS
       });
   };
 
+  canvas.findUser = function (id, cb) {
+    $http
+      .get(BASE_URL + 'users/' + id + '.json')
+      .success(function (data) {
+        cb(data);
+      });
+  };
+
   canvas.toggleOn = function () {
     status.active = true;
     status.user = user;

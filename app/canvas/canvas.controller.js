@@ -7,16 +7,18 @@ angular
         fb               = new Firebase(BASE_URL),
         id               = $stateParams.uuid,
         user             = fb.getAuth().uid,
-        fbUser           = fb.child('/users/' + user),
+        fbUser           = fb.child('/users/'),
         fbCanvas         = fb.child('/canvas/' + id),
         counter,
-        wordCount
+        wordCount,
+        userName;
 
     vm.messages      = $firebaseArray(fbCanvas.child('/messages'));
     vm.canvases      = $firebaseArray(fb.child('/canvas'));
     vm.canvas        = $firebaseObject(fbCanvas);
     vm.canvasInfo    = $firebaseObject(fbCanvas.child('/info'));
     vm.messageCount  = 0;
+    vm.user          = fb.getAuth().uid;
 
     vm.canvas.$bindTo($scope, "data");
 
@@ -24,6 +26,10 @@ angular
       vm.info = canvas.info;
       counter = vm.info.counter;
       wordCount = vm.info.wordCount;
+    });
+
+    canvasFactory.findUser(user, function (userInfo) {
+      vm.username = userInfo.profile.username;
     });
 
     vm.messages.$loaded().then(function(messages){
@@ -35,9 +41,9 @@ angular
 
     vm.addMessage = function() {
       if (vm.info.counter < vm.info.format.length - 1) {
-        vm.post = {text: vm.newMessageText, user: user};
+        vm.post = {text: vm.newMessageText, user: vm.user, username: vm.username};
       } else {
-        vm.post = {text: vm.newMessageText + '.', user: user};
+        vm.post = {text: vm.newMessageText + '.', user: vm.user, username: vm.username};
       }
 
       canvasFactory.addMessage(vm.post).then(function(){
@@ -64,7 +70,7 @@ angular
           format     = vm.canvasFormat.split(" "),
           canvasData = {
             info: { name: vm.canvasName,
-                    creator: user,
+                    creator: vm.username,
                     contributors: 1,
                     counter: 0,
                     wordCount: 0,
@@ -120,5 +126,16 @@ angular
     vm.viewResults = function() {
       return data.wordsNeeded > data.wordCount;
     };
-    
+
+    vm.findUsername = function(id) {
+      var user = fb.child('/users/' + id);
+      console.log(user);
+      user.once('value', function(snap) {
+        userName = snap.val().profile.username;
+        console.log(userName);
+        return userName;
+      });
+      return userName;
+    };
+
   }
