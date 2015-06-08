@@ -14,7 +14,7 @@ angular
           } else {
             console.log("Authenticated successfully with payload:", authData);
             $rootScope.user = authData;
-            $location.path('/canvas');
+            $location.path('/story');
             // triggers a "digest cycle" to fix async issue with $location.path
             $scope.$apply();
           }

@@ -2,17 +2,17 @@
   <div class="col-sm-12">
 
     <h2>{{data.info.name}}</h2>
-    <ul class="canvas-format">
+    <ul class="story-format">
       <li ng-repeat="word in data.info.format track by $index" ng-class="{'active': $index == data.info.counter}">{{word}}&nbsp;</li>
     </ul>
 
-    <div class="panel panel-default canvas">
+    <div class="panel panel-default story">
       <div class="panel-body">
         <div ui-view></div>
       </div>
     </div>
 
-    <div class="canvas-info">
+    <div class="story-info">
       <ul>
         <li>Words submitted: {{data.info.wordCount}}</li>
         <li>Words needed to view: {{data.info.wordsNeeded}}</li>

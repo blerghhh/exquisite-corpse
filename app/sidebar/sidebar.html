@@ -1,8 +1,8 @@
 <div class="sidebar-wrapper" ng-controller="NavCtrl as nav">
   <ul class="sidebar-nav">
     <li class="sidebar-brand"><a href="#/">Exquisite Corpse</a></li>
-    <li ng-show="nav.isLoggedIn()"><a href="#/canvas/new">New Canvas</a></li>
-    <li ng-show="nav.isLoggedIn()"><a ng-click="nav.randomCanvas()">Random Canvas</a></li>
+    <li ng-show="nav.isLoggedIn()"><a href="#/story/new">New Story</a></li>
+    <li ng-show="nav.isLoggedIn()"><a ng-click="nav.randomStory()">Random Story</a></li>
     <li ng-hide="nav.isLoggedIn()" data-match-route="/login"><a href="#/login">Login</a></li>
     <li ng-hide="nav.isLoggedIn()" data-match-route="/login"><a href="#/register">Register</a></li>
     <li ng-show="nav.isLoggedIn()" data-match-route="/logout"><a href="#/logout">Logout</a></li>

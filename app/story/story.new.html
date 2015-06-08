@@ -1,30 +1,30 @@
     <div class="panel panel-default">
       <div class="panel-heading">New Story</div>
       <div class="panel-body">
-        <form name="newCanvasForm" ng-submit="newCanvasForm.$valid && canvas.createCanvas()" novalidate>
+        <form name="newStoryForm" ng-submit="newStoryForm.$valid && story.createStory()" novalidate>
           <div class="form-group">
             <label>Name</label>
-            <input name="canvasName" class="form-control" type="text" placeholder="My Story" ng-model="canvas.canvasName" required>
+            <input name="storyName" class="form-control" type="text" placeholder="My Story" ng-model="story.storyName" required>
           </div>
           <div class="form-group">
             <label>Sentence format</label>
             <p>Ex: article adjective noun auxiliary-verb verb article adjective noun. <a data-animation="am-fade-and-slide-top" data-template="includes/parts-of-speech.html" bs-modal="partsOfSpeech">Review parts of speech</a></p>
-            <textarea name="canvasFormat" class="form-control" type="text" ng-model="canvas.canvasFormat" required></textarea>
+            <textarea name="storyFormat" class="form-control" type="text" ng-model="story.storyFormat" required></textarea>
           </div>
           <div class="form-group">
             <label>Minumum word count</label>
-            <input name="canvasWordCount" class="form-control" type="number" ng-model="canvas.canvasWordsNeeded" placeholder="20" required>
+            <input name="storyWordCount" class="form-control" type="number" ng-model="story.storyWordsNeeded" placeholder="20" required>
           </div>
           <div class="checkbox">
             <label class="checkbox-inline">
-              <input type="checkbox" ng-model="canvas.private" value="true"> Private
+              <input type="checkbox" ng-model="story.private" value="true"> Private
             </label>
           </div>
           <div class="form-group">
             <input type="submit" class="btn btn-primary">
           </div>
 
-          <div ng-messages="NewCanvasForm.message.$error" ng-if="NewCanvasForm.message.$dirty" role="alert">
+          <div ng-messages="NewStoryForm.message.$error" ng-if="NewStoryForm.message.$dirty" role="alert">
             <div ng-message="required" class="alert alert-danger">Type your word and press enter!</div>
             <div ng-message="maxlength" class="alert alert-danger">Your word too long. Words must be less than 20 characters.</div>
             <div ng-message="pattern" class="alert alert-danger">White space detected. You can only submit one word at a time.</div>

@@ -15,9 +15,9 @@ function exquisiteConfig($stateProvider, $urlRouterProvider) {
       templateUrl: 'main/main.welcome.html',
     })
     .state('main.new', {
-      url: '/canvas/new',
-      templateUrl: 'canvas/canvas.new.html',
-      controller: 'CanvasCtrl as canvas',
+      url: '/story/new',
+      templateUrl: 'story/story.new.html',
+      controller: 'StoryCtrl as story',
       private: true
     })
     .state('main.browse', {
@@ -26,16 +26,16 @@ function exquisiteConfig($stateProvider, $urlRouterProvider) {
       controller: 'BrowseCtrl as browse',
       private: true
     })
-    .state('main.canvas/:uuid', {
+    .state('main.story/:uuid', {
       abstract: true,
-      url: '/canvas/:uuid',
-      templateUrl: 'canvas/canvas.html',
-      controller: 'CanvasCtrl as canvas'
+      url: '/story/:uuid',
+      templateUrl: 'story/story.html',
+      controller: 'StoryCtrl as story'
     })
-    .state('main.canvas/:uuid.story', {
+    .state('main.story/:uuid.story', {
       url: '',
-      templateUrl: 'canvas/canvas.story.html',
-      controller: 'CanvasCtrl as canvas',
+      templateUrl: 'story/story.story.html',
+      controller: 'StoryCtrl as story',
       private: true
     })
     .state('main.profile', {

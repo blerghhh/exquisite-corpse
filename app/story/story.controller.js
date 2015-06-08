@@ -1,34 +1,34 @@
 angular
   .module('exquisite')
-  .controller('CanvasCtrl', CanvasCtrl);
+  .controller('StoryCtrl', StoryCtrl);
 
-  function CanvasCtrl ($stateParams, $scope, $location, $firebaseArray, $firebaseObject, canvasFactory, BASE_URL) {
+  function StoryCtrl ($stateParams, $scope, $location, $firebaseArray, $firebaseObject, storyFactory, BASE_URL) {
     var vm               = this,
         fb               = new Firebase(BASE_URL),
         id               = $stateParams.uuid,
         user             = fb.getAuth().uid,
         fbUser           = fb.child('/users/'),
-        fbCanvas         = fb.child('/canvas/' + id),
+        fbStory         = fb.child('/story/' + id),
         counter,
         wordCount,
         userName;
 
-    vm.messages      = $firebaseArray(fbCanvas.child('/messages'));
-    vm.canvases      = $firebaseArray(fb.child('/canvas'));
-    vm.canvas        = $firebaseObject(fbCanvas);
-    vm.canvasInfo    = $firebaseObject(fbCanvas.child('/info'));
+    vm.messages      = $firebaseArray(fbStory.child('/messages'));
+    vm.stories      = $firebaseArray(fb.child('/story'));
+    vm.story        = $firebaseObject(fbStory);
+    vm.storyInfo    = $firebaseObject(fbStory.child('/info'));
     vm.messageCount  = 0;
     vm.user          = fb.getAuth().uid;
 
-    vm.canvas.$bindTo($scope, "data");
+    vm.story.$bindTo($scope, "data");
 
-    canvasFactory.findOne(id, function (canvas) {
-      vm.info = canvas.info;
+    storyFactory.findOne(id, function (story) {
+      vm.info = story.info;
       counter = vm.info.counter;
       wordCount = vm.info.wordCount;
     });
 
-    canvasFactory.findUser(user, function (userInfo) {
+    storyFactory.findUser(user, function (userInfo) {
       vm.username = userInfo.profile.username;
     });
 
@@ -46,11 +46,11 @@ angular
         vm.post = {text: vm.newMessageText + '.', user: vm.user, username: vm.username};
       }
 
-      canvasFactory.addMessage(vm.post).then(function(){
+      storyFactory.addMessage(vm.post).then(function(){
         vm.newMessageText = null;
       });
 
-      vm.canvasInfo.$loaded().then(function(data){
+      vm.storyInfo.$loaded().then(function(data){
         if (data.counter < data.format.length - 1) {
           data.counter = data.counter + 1;
           vm.info.counter = vm.info.counter + 1;
@@ -65,29 +65,29 @@ angular
 
     };
 
-    vm.createCanvas = function() {
-      var newCanvas  = $firebaseArray(fb.child('/canvas')),
-          format     = vm.canvasFormat.split(" "),
-          canvasData = {
-            info: { name: vm.canvasName,
+    vm.createStory = function() {
+      var newStory  = $firebaseArray(fb.child('/story')),
+          format     = vm.storyFormat.split(" "),
+          storyData = {
+            info: { name: vm.storyName,
                     creator: vm.username,
                     contributors: 1,
                     counter: 0,
                     wordCount: 0,
-                    wordsNeeded: vm.canvasWordsNeeded,
+                    wordsNeeded: vm.storyWordsNeeded,
                     format: format },
             status: { active: false, private: vm.private || false }
           };
 
-      newCanvas.$add(canvasData).then(function(canvas) {
-        console.log(canvas.key());
-        $location.path('/canvas/' + canvas.key());
+      newStory.$add(storyData).then(function(story) {
+        console.log(story.key());
+        $location.path('/story/' + story.key());
 
       });
 
-      vm.canvasName = null;
-      vm.canvasFormat = null;
-      vm.canvasWordCount = null;
+      vm.storyName = null;
+      vm.storyFormat = null;
+      vm.storyWordCount = null;
 
     };
 
@@ -103,22 +103,22 @@ angular
     };
 
     vm.toggleOn = function() {
-      canvasFactory.toggleOn();
+      storyFactory.toggleOn();
     };
 
     vm.toggleOff = function() {
-      canvasFactory.toggleOff();
+      storyFactory.toggleOff();
     };
 
-    vm.addOrEditCanvas = function () {
-      canvasFactory.create(vm.newCanvas, function (res) {
-        vm.data[res.name] = vm.newCanvas;
-        $location.path('/canvas');
+    vm.addOrEditStory = function () {
+      storyFactory.create(vm.newStory, function (res) {
+        vm.data[res.name] = vm.newStory;
+        $location.path('/story');
       });
     };
 
-    vm.removeCanvas = function (id) {
-      canvasFactory.delete(id, function () {
+    vm.removeStory = function (id) {
+      storyFactory.delete(id, function () {
         delete vm.data[id];
       });
     };

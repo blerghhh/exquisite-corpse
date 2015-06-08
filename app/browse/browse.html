@@ -4,9 +4,9 @@
       <div class="panel-heading">Browse</div>
       <div class="panel-body">
         <ul>
-          <li ng-repeat="canvas in browse.canvases
+          <li ng-repeat="story in browse.stories
           | filter:{'status': {'private': false}}:true">
-            <a href="#/canvas/{{canvas.$id}}">{{canvas.info.name}}</a>
+            <a href="#/story/{{story.$id}}">{{story.info.name}}</a>
           </li>
         </ul>
       </div>

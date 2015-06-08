@@ -1,28 +1,28 @@
 angular
   .module('exquisite')
-  .factory('canvasFactory', canvasFactory);
+  .factory('storyFactory', storyFactory);
 
-function canvasFactory($http, $firebaseArray, $firebaseObject, $stateParams, BASE_URL) {
+function storyFactory($http, $firebaseArray, $firebaseObject, $stateParams, BASE_URL) {
   var fb       = new Firebase(BASE_URL),
       id       = $stateParams.uuid,
       user     = fb.getAuth().uid,
-      fbCanvas = fb.child('canvas/' + id),
-      messages = $firebaseArray(fbCanvas.child('/messages')),
-      info     = $firebaseObject(fbCanvas.child('/info')),
-      status   = $firebaseObject(fbCanvas.child('/status')),
-      canvas   = {};
+      fbStory = fb.child('story/' + id),
+      messages = $firebaseArray(fbStory.child('/messages')),
+      info     = $firebaseObject(fbStory.child('/info')),
+      status   = $firebaseObject(fbStory.child('/status')),
+      story   = {};
 
-  canvas.addMessage = function(data) {
+  story.addMessage = function(data) {
     id = $stateParams.uuid;
-    fbCanvas = fb.child('canvas/' + id);
-    messages = $firebaseArray(fbCanvas.child('/messages'));
+    fbStory = fb.child('story/' + id);
+    messages = $firebaseArray(fbStory.child('/messages'));
 
     return messages.$add(data);
   };
 
-  canvas.update = function(data) {
+  story.update = function(data) {
 
-    vm.canvasInfo.$loaded().then(function(data){
+    vm.storyInfo.$loaded().then(function(data){
       if (data.counter < data.format.length - 1) {
         data.counter = data.counter + 1;
         vm.info.counter = vm.info.counter + 1;
@@ -34,15 +34,15 @@ function canvasFactory($http, $firebaseArray, $firebaseObject, $stateParams, BAS
     });
   };
 
-  canvas.findOne = function (id, cb) {
+  story.findOne = function (id, cb) {
     $http
-      .get(BASE_URL + 'canvas/' + id + '.json')
+      .get(BASE_URL + 'story/' + id + '.json')
       .success(function (data) {
         cb(data);
       });
   };
 
-  canvas.findUser = function (id, cb) {
+  story.findUser = function (id, cb) {
     $http
       .get(BASE_URL + 'users/' + id + '.json')
       .success(function (data) {
@@ -50,18 +50,18 @@ function canvasFactory($http, $firebaseArray, $firebaseObject, $stateParams, BAS
       });
   };
 
-  canvas.toggleOn = function () {
+  story.toggleOn = function () {
     status.active = true;
     status.user = user;
     status.$save();
     console.log(user + ' is typing...');
   };
 
-  canvas.toggleOff = function () {
+  story.toggleOff = function () {
     status.active = false;
     status.$save();
   };
 
-return canvas;
+return story;
 
 }

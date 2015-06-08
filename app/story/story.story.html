@@ -1,0 +1,15 @@
+<form name="storyForm" class="story-form" ng-submit="storyForm.$valid && story.addMessage()" novalidate>
+  <input class="new-message" name="message" placeholder="{{data.info.format[data.info.counter]}}" ng-model="story.newMessageText" ng-focus="story.toggleOn()" ng-blur="story.toggleOff()" ng-maxlength="20" ng-pattern="/^[a-zA-Z0-9\S]*$/" required />
+  <div ng-include="'story/story.validation.html'"></div>
+</form>
+
+<div class="row">
+  <div class="col-sm-12">
+      <div class="results">
+        <ul ng-class="{'blur': data.info.wordCount < data.info.wordsNeeded}">
+          <li ng-repeat="message in data.messages" class="user{{story.userNumber(message.user) + 1}} large"  data-content="{{popover.content}}" data-template="story/story.popover.html" data-trigger="click" data-auto-close="1" data-placement="bottom"  bs-popover>{{message.text}}&nbsp;
+          </li>
+        </ul>
+    </div>
+  </div>
+</div>

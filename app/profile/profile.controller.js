@@ -2,22 +2,18 @@ angular
   .module('exquisite')
   .controller('ProfileCtrl', ProfileCtrl);
 
-function ProfileCtrl($stateParams, $firebaseArray, $firebaseObject, profileFactory, canvasFactory, BASE_URL) {
+function ProfileCtrl($stateParams, $firebaseArray, $firebaseObject, BASE_URL) {
   var vm  = this,
       fb  = new Firebase(BASE_URL),
-      id  = fb.getAuth().uid,
-      username = $stateParams.username;
+      id  = fb.getAuth().uid;
 
-  vm.canvases = $firebaseArray(fb.child('/canvas'));
-  vm.userId = id;
+  vm.stories = $firebaseArray(fb.child('/story'));
   vm.username = $stateParams.username;
-
-  profileFactory.findOne(id, function (userInfo) {
-    vm.user = userInfo;
-  });
+  vm.userId = id;
+  vm.user = $firebaseObject(fb.child('/users/' + id));
 
   vm.removeStory = function (id) {
-    var story = $firebaseObject(fb.child('/canvas/' + id));
+    var story = $firebaseObject(fb.child('/story/' + id));
     story.$remove().then(function(story){
       console.log("story deleted");
     });

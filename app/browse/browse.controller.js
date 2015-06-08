@@ -2,7 +2,7 @@ angular
   .module('exquisite')
   .controller('BrowseCtrl', BrowseCtrl);
 
-  function BrowseCtrl ($location, $firebaseArray, canvasFactory, BASE_URL) {
+  function BrowseCtrl ($location, $firebaseArray, storyFactory, BASE_URL) {
     var vm       = this,
         fb       = new Firebase(BASE_URL),
         id,
@@ -14,7 +14,7 @@ angular
       return data;
     })
 
-    vm.canvases = $firebaseArray(fb.child('/canvas'));
+    vm.stories = $firebaseArray(fb.child('/story'));
 
     vm.findUsername = function() {
       // id = vm.info.creator;

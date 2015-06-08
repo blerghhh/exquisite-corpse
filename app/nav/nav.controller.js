@@ -17,9 +17,9 @@ function NavCtrl ($location, $scope, $http, $firebaseArray, BASE_URL) {
       });
   }
 
-  vm.canvases = $firebaseArray(fb.child('/canvas'));
-  vm.canvases.$loaded().then(function(canvases){
-    canvases.forEach(function(i){
+  vm.stories = $firebaseArray(fb.child('/story'));
+  vm.stories.$loaded().then(function(stories){
+    stories.forEach(function(i){
       if (i.status.private === false) {
         storyIds.push(i.$id);
       }
@@ -35,10 +35,9 @@ function NavCtrl ($location, $scope, $http, $firebaseArray, BASE_URL) {
     $(".wrapper").toggleClass("toggled");
   };
 
-  vm.randomCanvas = function() {
-    var randomCanvas = storyIds[Math.floor(Math.random() * storyIds.length)];
-    $location.path('/canvas/' + randomCanvas);
-    $scope.apply();
+  vm.randomStory = function() {
+    var randomStory = storyIds[Math.floor(Math.random() * storyIds.length)];
+    $location.path('/story/' + randomStory);
   };
 
 }
