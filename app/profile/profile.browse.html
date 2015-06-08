@@ -6,7 +6,8 @@
           <h3>{{profile.username}}'s Stories</h3>
           <table class="table table-hover">
             <tr ng-repeat="story in profile.stories
-            | filter:{'info': {'creator': profile.username}}:true">
+            | filter:{'info': {'creator': profile.username}}:true
+            | filter:{'status': {'private': false}}:true">
               <td><a href="#/story/{{story.$id}}">{{story.info.name}}</a></td>
             </tr>
           </table>
