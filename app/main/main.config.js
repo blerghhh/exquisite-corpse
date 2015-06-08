@@ -20,12 +20,6 @@ function exquisiteConfig($stateProvider, $urlRouterProvider) {
       controller: 'StoryCtrl as story',
       private: true
     })
-    .state('main.browse', {
-      url: '/browse',
-      templateUrl: 'browse/browse.html',
-      controller: 'BrowseCtrl as browse',
-      private: true
-    })
     .state('main.story/:uuid', {
       abstract: true,
       url: '/story/:uuid',
