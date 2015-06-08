@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-sm-8 col-centered">
+    <div class="panel panel-default">
+      <h3 class="center">Create your account</h3>
+      <div class="panel-body">
+        <form name="loginForm" ng-submit="loginForm.$valid && auth.register()" novalidate>
+
+          <div class="form-group">
+            <label>Username</label>
+            <input type="text" class="form-control" placeholder="corpseguy4ever" ng-model="auth.user.username">
+          </div>
+
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" class="form-control" placeholder="your@email.com" ng-model="auth.user.email" required>
+          </div>
+
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" class="form-control" placeholder="p@$$w0rd" ng-model="auth.user.password" required>
+          </div>
+
+          <div class="form-group">
+            <input class="btn btn-md btn-primary width-100" type="submit" class="button small" value="Create your account">
+          </div>
+        </form>
+      </div>
+      <div class="panel-footer">
+        <p class="center">Already have an account? <a href="#/login">Login!</a></p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -4,6 +4,7 @@
     <li ng-show="nav.isLoggedIn()"><a href="#/canvas/new">New Canvas</a></li>
     <li ng-show="nav.isLoggedIn()"><a href="#" ng-click="nav.randomCanvas()">Random Canvas</a></li>
     <li ng-hide="nav.isLoggedIn()" data-match-route="/login"><a href="#/login">Login</a></li>
+    <li ng-hide="nav.isLoggedIn()" data-match-route="/login"><a href="#/register">Register</a></li>
     <li ng-show="nav.isLoggedIn()" data-match-route="/logout"><a href="#/logout">Logout</a></li>
     <li ng-show="nav.isLoggedIn()" data-match-route="/profile"><a href="#/profile">Profile</a></li>
   </ul>

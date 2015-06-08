@@ -5,19 +5,32 @@ angular
 
 function authConfig($stateProvider) {
   $stateProvider
-    .state('login', {
-      url: '/login',
-      templateUrl: 'login/login.html',
-      controller: 'AuthCtrl as auth',
-      private: false,
-      resolve: {
-        data: function ($location, authFactory) {
-          if (authFactory.isLoggedIn()) {
-            $location.path('/');
-          }
+  .state('main.login', {
+    url: '/login',
+    templateUrl: 'login/auth.login.html',
+    controller: 'AuthCtrl as auth',
+    private: false,
+    resolve: {
+      data: function ($location, authFactory) {
+        if (authFactory.isLoggedIn()) {
+          $location.path('/');
         }
       }
-    })
+    }
+  })
+  .state('main.register', {
+    url: '/register',
+    templateUrl: 'login/auth.register.html',
+    controller: 'AuthCtrl as auth',
+    private: false,
+    resolve: {
+      data: function ($location, authFactory) {
+        if (authFactory.isLoggedIn()) {
+          $location.path('/');
+        }
+      }
+    }
+  })
     .state('logout', {
       url: '/logout',
       controller: 'LogoutCtrl'

@@ -11,10 +11,18 @@ $gray-lightest:         #f8f8f8;
 @import '../../bower_components/bootstrap-additions/dist/bootstrap-additions.min.css';
 @import '../../bower_components/angular-motion/dist/angular-motion.min.css';
 @import '../../bower_components/font-awesome/css/font-awesome.min.css';
-@import url(https://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Roboto:400,700,700italic,400italic);
-
+/* @import url(https://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Roboto:400,700,700italic,400italic);
+ */
 body, .wrapper {
   background: $gray-lightest;
+}
+
+.center {
+  text-align: center;
+}
+
+.width-100 {
+  width: 100%;
 }
 
 .main {

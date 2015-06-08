@@ -8,7 +8,6 @@ angular
     vm.user = {};
 
     vm.login = function () {
-
       authFactory.login(vm.user, function (error, authData) {
         if (error) {
             console.log("Login Failed!", error);
