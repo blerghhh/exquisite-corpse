@@ -35,6 +35,13 @@ function NavCtrl ($location, $scope, $http, $firebaseArray, BASE_URL) {
     $(".wrapper").toggleClass("toggled");
   };
 
+  vm.smallDeviceSidebarToggle = function() {
+    var width = $( window ).width();
+    if (width < 600) {
+      $(".wrapper").toggleClass("toggled");
+    }
+  }
+
   vm.randomStory = function() {
     var randomStory = storyIds[Math.floor(Math.random() * storyIds.length)];
     $location.path('/story/' + randomStory);
