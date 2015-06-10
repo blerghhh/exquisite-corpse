@@ -21,7 +21,6 @@ angular
     vm.posArray = ['article', 'verb', 'noun', 'auxiliary-verb', 'preposition',
                   'adverb', 'conjunction', 'adjective'];
     vm.newStoryPosArray = [];
-    vm.posPopover = {delay: {show: 1000, hide: 100}};
 
     vm.addPos = function(pos) {
       vm.newStoryPosArray.push(pos);
