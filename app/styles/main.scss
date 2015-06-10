@@ -1,4 +1,4 @@
-$brand-primary:         #73A6A4;
+$brand-primary:         #9A3EAB;
 $brand-secondary:       #6E6E6D;
 $brand-tertiary:        #D9D6D0;
 $brand-success:         #5cb85c !default;
@@ -42,16 +42,20 @@ body, .wrapper {
 }
 
 input.minimal {
+  width: 100%;
   display: block;
   border: 0;
   border-bottom: 1px solid lightgray;
-  margin: 0;
-  padding: 4px;
+  margin-bottom: 0.25em;
+  padding-bottom: 0.25em;
   &:focus {
-    outline: -webkit-focus-ring-color auto 3px;
-    padding: 4px;
-    border-bottom: 0;
+    outline: 0;
   }
+}
+
+.validation-included {
+  min-height: 5em;
+  margin-bottom: 20px;
 }
 
 .alert-danger {
@@ -60,6 +64,16 @@ input.minimal {
   background: none;
   color: $brand-danger;
   padding: 0;
+}
+
+.navbar-header {
+  i {
+    transition: all 300ms ease;
+  }
+  i:hover {
+    color: $brand-primary;
+    transition: all 300ms ease;
+  }
 }
 
 .navbar-nav {
@@ -104,13 +118,20 @@ input.minimal {
   background-color: white;
 }
 
-.user1 {color:darkseagreen};
-.user2 {color: maroon};
-.user3 {color: teal};
-.user4 {color: peru};
-.user5 {color: cadetblue};
-.user6 {color:plum};
-.user7 {color: coral};
+.word {
+  transition: all 300ms ease;
+  &:hover {
+    transition: all 300ms ease;
+  }
+}
+
+.user1:hover {color:darkseagreen};
+.user2:hover {color: maroon};
+.user3:hover {color: teal};
+.user4:hover {color: peru};
+.user5:hover {color: cadetblue};
+.user6:hover {color:plum};
+.user7:hover {color: coral};
 
 /* Forms */
 
@@ -123,6 +144,7 @@ input.minimal {
     }
     .btn {
       margin-right: 4px;
+      margin-top: 8px;
     }
   }
 }
