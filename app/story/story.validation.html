@@ -1,5 +1,17 @@
 <div ng-messages="storyForm.message.$error" ng-if="storyForm.message.$dirty" role="alert">
   <div ng-message="required" class="alert alert-danger">Type your word and press enter!</div>
-  <div ng-message="maxlength" class="alert alert-danger">Your word too long. Words must be less than 20 characters.</div>
+  <div ng-message="maxlength" class="alert alert-danger">Word is too long (must be less than 20 characters).</div>
   <div ng-message="pattern" class="alert alert-danger">White space detected. You can only submit one word at a time.</div>
+</div>
+
+<div ng-messages="newStoryForm.storyName.$error" ng-if="newStoryForm.storyName.$dirty" role="alert">
+  <div ng-message="required" class="alert alert-danger">Story name required.</div>
+  <div ng-message="maxlength" class="alert alert-danger">Name is too long (must be less than 50 characters).</div>
+</div>
+
+<div ng-messages="newStoryForm.storySentenceCount.$error" role="alert">
+  <div ng-message="required" class="alert alert-danger">Minimum sentence count required.</div>
+  <div ng-message="pattern" class="alert alert-danger">Minimum sentence count must be a number (i.e. 5).</div>
+  <div ng-message="minlength" class="alert alert-danger">Sentence count must be at least 1.</div>
+  <div ng-message="maxlength" class="alert alert-danger">Maximum sentence count is 50.</div>
 </div>
