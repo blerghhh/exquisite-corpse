@@ -80,15 +80,14 @@ angular
 
     vm.createStory = function() {
       var newStory  = $firebaseArray(fb.child('/story')),
-          format    = vm.newStoryPosArray,
           storyData = {
             info: { name: vm.storyName,
                     creator: vm.username,
                     contributors: 1,
                     counter: 0,
                     wordCount: 0,
-                    wordsNeeded: vm.storyWordsNeeded,
-                    format: format },
+                    wordsNeeded: vm.newStoryPosArray.length * vm.storyWordsNeeded,
+                    format: vm.newStoryPosArray },
             status: { active: false, private: vm.private || false }
           };
 

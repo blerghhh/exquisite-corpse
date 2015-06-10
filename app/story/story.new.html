@@ -2,15 +2,16 @@
       <div class="panel-heading">New Story</div>
       <div class="panel-body">
         <form name="newStoryForm" class="new-story-form" ng-submit="newStoryForm.$valid && story.createStory()" novalidate>
-          <div class="form-group">
+          <div class="form-group validation-included">
             <label>Name</label>
-            <input name="storyName" class="form-control" type="text" placeholder="My Story" ng-model="story.storyName" required>
+            <input name="storyName" class="minimal" type="text" placeholder="My Excellent Adventure" ng-model="story.storyName" ng-maxlength="50" required />
+            <div ng-include="'validation/storyName.errors.html'"></div>
           </div>
           <div class="form-group">
-            <label>Build your sentence format (or <a ng-click="story.defaultPos()">use the defualt</a>)</label>
+            <label>Build your sentence format (or <a ng-click="story.defaultPos()">use the default</a>)</label>
             <ul>
               <li ng-repeat="pos in story.posArray" >
-                <button class="btn btn-xs btn-primary" ng-click="story.addPos(pos)"
+                <button class="btn btn-sm btn-primary" ng-click="story.addPos(pos)"
                  data-template="includes/popovers/popover.{{pos}}.html" data-trigger="hover" data-auto-close="1" data-delay=250 data-placement="bottom" bs-popover>
                   {{pos}}
                 </button>
@@ -19,32 +20,46 @@
             <div class="fake-textarea">
               <ul>
                 <li ng-repeat="word in story.newStoryPosArray track by $index">
-                  <button class="btn btn-xs" ng-click="story.deletePos($index)">{{word}}
+                  <button class="btn btn-sm btn-primary" ng-click="story.deletePos($index)">{{word}}
                     <i class="fa fa-times"></i>
                   </button>
                 </li>
               </ul>
             </div>
           </div>
-          <div class="form-group">
-            <label>Minumum word count</label>
-            <input name="storyWordCount" class="form-control" type="number" ng-model="story.storyWordsNeeded" placeholder="20" required>
-          </div>
-          <div class="checkbox">
-            <label class="checkbox-inline">
-              <input type="checkbox" ng-model="story.private" value="true"> Private
-            </label>
-          </div>
-          <div class="form-group">
-            <input type="submit" class="btn btn-primary">
-          </div>
+          <div class="form-group validation-included">
+            <div class="col-sm-6">
+              <label>Sentences needed to view</label>
 
-          <div ng-messages="NewStoryForm.message.$error" ng-if="NewStoryForm.message.$dirty" role="alert">
-            <div ng-message="required" class="alert alert-danger">Type your word and press enter!</div>
-            <div ng-message="maxlength" class="alert alert-danger">Your word too long. Words must be less than 20 characters.</div>
-            <div ng-message="pattern" class="alert alert-danger">White space detected. You can only submit one word at a time.</div>
-          </div>
+              <select class="form-control" ng-model="story.storyWordsNeeded" required>
+                <option value="1" selected>1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
 
+<!--               <input name="storySentenceCount" class="minimal" type="text" ng-model="story.storyWordsNeeded" placeholder="5" ng-pattern="/^d{0,9}?$/" required>
+ -->              <div ng-include="'validation/sentenceCount.errors.html'"></div>
+            </div>
+
+            <div class="col-sm-6">
+              <label>Private?</label>
+              <div class="checkbox">
+                <label class="checkbox-inline">
+                  <input type="checkbox" ng-model="story.private" value="true"> Yes
+                </label>
+              </div>
+            </div>
+          </div>
+            <div class="form-group">
+              <input type="submit" class="btn btn-primary">
+            </div>
         </form>
       </div>
     </div>
