@@ -1,0 +1,4 @@
+<div ng-messages="newStoryForm.storySentenceCount.$error" ng-if="newStoryForm.storySentenceCount.$dirty" role="alert">
+  <div ng-message="required" class="alert alert-danger">Minimum sentence count required.</div>
+  <div ng-message="pattern" class="alert alert-danger">Minimum sentence count must be a number (i.e. 5).</div>
+</div>

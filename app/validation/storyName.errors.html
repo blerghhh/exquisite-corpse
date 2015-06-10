@@ -1,0 +1,4 @@
+<div ng-messages="newStoryForm.storyName.$error" ng-if="newStoryForm.storyName.$dirty" role="alert">
+  <div ng-message="required" class="alert alert-danger">Story name required.</div>
+  <div ng-message="maxlength" class="alert alert-danger">Name is too long (must be less than 50 characters).</div>
+</div>

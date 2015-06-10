@@ -1,0 +1,5 @@
+<div ng-messages="storyForm.message.$error" ng-if="storyForm.message.$dirty" role="alert">
+  <div ng-message="required" class="alert alert-danger">Type your word and press enter!</div>
+  <div ng-message="maxlength" class="alert alert-danger">Word is too long (must be less than 20 characters).</div>
+  <div ng-message="pattern" class="alert alert-danger">White space detected. You can only submit one word at a time.</div>
+</div>
