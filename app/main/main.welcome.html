@@ -1,18 +1,16 @@
-<div class="row">
+<div class="row welcome">
 
     <div class="col-sm-12">
 
       <div class="row">
         <div class="col-sm-12">
-          <div class="welcome">
+          <div class="welcome" ng-controller="NavCtrl as nav">
             <h1>What is this?</h1>
-            <p><a href="http://en.wikipedia.org/wiki/Exquisite_corpse" target="_blank"><strong>Exquisite corpse</strong></a>, also known as exquisite cadaver (from the original French term cadavre exquis) or rotating corpse, is a method by which a collection of words or images is collectively assembled. Each collaborator adds to a composition in sequence by following a rule (e.g. "The adjective noun adverb verb the adjective noun", as in "The green duck sweetly sang the dreadful dirge."</p>
+            <p><a href="http://en.wikipedia.org/wiki/Exquisite_corpse" target="_blank">Exquisite corpse</a> (from the original French term cadavre exquis) is a method by which a collection of words or images is collectively assembled. Each collaborator adds to a composition in sequence by following a rule (e.g. "The adjective noun adverb verb the adjective noun", as in "The green duck sweetly sang the dreadful dirge."</p>
 
             <h1>How do I play?</h1>
-            <p>Use the <strong>New Story</strong> control panel to create a story with a format and minimum word count of your choice, then click submit. You can then share your story's URL with others and invite them to collaborate.
+            <p><span ng-hide="nav.isLoggedIn()">First <a href="./#/login">login</a> or <a href="./#/register">create an account</a>. </span>You can <a href="./#/story/new">create a story</a> or jump into a <a ng-click="nav.randomStory()">random story</a>. You can then share a story's URL with others and invite them to collaborate.</p>
 
-            <h1>What else can I do?</h1>
-            <p>For now, not much. This app is still being developed. Check back often.</p>
           </div>
         </div>
       </div>

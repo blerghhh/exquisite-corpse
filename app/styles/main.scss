@@ -11,10 +11,20 @@ $gray-lightest:         #f8f8f8;
 @import '../../bower_components/bootstrap-additions/dist/bootstrap-additions.min.css';
 @import '../../bower_components/angular-motion/dist/angular-motion.min.css';
 @import '../../bower_components/font-awesome/css/font-awesome.min.css';
-/* @import url(https://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Roboto:400,700,700italic,400italic);
- */
+@import url(http://fonts.googleapis.com/css?family=Inconsolata:400,700);
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
+
 body, .wrapper {
   background: $gray-lightest;
+  font-family: "Inconsolata", "Courier New", monospace;
+}
+
+.popover {
+  font-family: "Inconsolata", "Courier New", monospace;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: 'Roboto', Helvetica, Arial, sans-serif;
 }
 
 .center {
@@ -310,6 +320,13 @@ input.minimal {
 .story-control-table {
   tr td:last-child {
     text-align: right;
+  }
+}
+
+/* Welcome Styles */
+.welcome p {
+  @media screen and (min-width: 520px) {
+    font-size: 18px;
   }
 }
 
